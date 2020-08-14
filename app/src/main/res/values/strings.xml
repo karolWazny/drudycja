@@ -1,0 +1,70 @@
+<resources>
+    <string name="app_name">Drudycja</string>
+    <string name="text_reka_1"></string>
+    <string name="text_reka_2"></string>
+    <string name="text_reka_3"></string>
+    <string name="text_reka_4"></string>
+    <string name="text_reka_5"></string>
+    <string name="text_reka_6"></string>
+    <string name="text_reka_7"></string>
+    <string name="text_reka_8"></string>
+    <string name="text_reka_9"></string>
+    <string name="text_reka_10"></string>
+    <string name="text_noga_1"></string>
+    <string name="text_noga_2"></string>
+    <string name="text_noga_3"></string>
+    <string name="text_noga_4"></string>
+    <string name="text_noga_5"></string>
+    <string name="text_noga_6"></string>
+    <string name="text_noga_7"></string>
+    <string name="text_noga_8"></string>
+    <string name="text_noga_9"></string>
+    <string name="text_noga_10"></string>
+    <string name="text_korpus_1"></string>
+    <string name="text_korpus_2"></string>
+    <string name="text_korpus_3"></string>
+    <string name="text_korpus_4"></string>
+    <string name="text_korpus_5"></string>
+    <string name="text_korpus_6"></string>
+    <string name="text_korpus_7"></string>
+    <string name="text_korpus_8"></string>
+    <string name="text_korpus_9"></string>
+    <string name="text_korpus_10"></string>
+    <string name="text_glowa_1">Cios sprawia, że przeciwnik na chwilę traci orientację. W swojej
+        następnej turze może wykonać tylko jedną akcję
+        (nie może wykonywać akcji podwójnych).</string>
+    <string name="text_glowa_2">Po silnym ciosie przeciwnik chwieje się na nogach. Jest całkowicie
+        zamroczony. Przez jedną rundę nie może wykonywać żadnych akcji.</string>
+    <string name="text_glowa_3">Cios zdziera skórę z głowy przeciwnika. Krew zalewa mu oczy,
+        częściowo go oślepiając. Do chwili zatamowania krwawienia ranny otrzymuje
+        modyfikator -10 do walki wręcz.</string>
+    <string name="text_glowa_4">Cios wgniata hełm przeciwnika. Od tej chwili osłona głowy
+        zmniejsza się o 1. Naprawa hełmu wymaga udanego testu rzemiosła (płatnerstwo).</string>
+    <string name="text_glowa_5">Trafiony przeciwnik pada na ziemię, oszołomiony potężnym ciosem.
+        Przez jedną rundę wszystkie testy wykonuje z modyfikatorem -30. Postać musi wykonać
+        akcję "wstawanie", żeby podnieść się z ziemi.</string>
+    <string name="text_glowa_6">Trafiony w czoło przeciwnik potyka się i przyklęka. Przez
+        1k10 rund jest ogłuszony.</string>
+    <string name="text_glowa_7">Trafiony w skroń przeciwnik pada na ziemię. Traci
+        przytomność na 1k10 minut. Przy następnych trafieniach stosuje się
+        zasadę Nagłej Śmierci.</string>
+    <string name="text_glowa_8">Cios zamienia twarz przeciwnika w krwawą miazgę. Nieszczęśnik
+    pada na ziemię, wijąc się z bólu i zakrywając twarz rękami. Do chwili otrzymania pomocy
+        medycznej jest traktowany jako bezbronny. Na początku każdej swojej tury musi wykonać rzut
+    procentowy. Wynik równy lub niższy od 20 oznacza, że raniona postać umiera z wykrwawienia.
+    Jeśli przeżyje walkę, musi wykonać test Odporności. Nieudany test oznacza utratę oka.</string>
+    <string name="text_glowa_9">Cios roztrzaskuje czaszkę przeciwnika, zabijając
+        go na miejscu.</string>
+    <string name="text_glowa_10">Precyzyjny cios ścina przeciwnikowi głowę. Bezgłowy korpus przez
+    chwilę stoi nieruchomo, po czym upada na ziemię. Atakujący jest zbryzgany krwią
+        przeciwnika.</string>
+    <string name="lab_main_tytul">Drudycja</string>
+    <string name="lab_new_game">Nowa walka</string>
+    <string name="lab_kontynuuj">Ostatnia walka</string>
+    <string name="lab_kampanie">Kampanie</string>
+    <string name="lab_wyjscie">Wyjście</string>
+    <string name="lab_pomoc">Pomoc</string>
+    <string name="title_character">Postacie</string>
+    <string name="title_party">Kampanie</string>
+    <string name="title_foes">Przeciwnicy</string>
+</resources>

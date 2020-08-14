@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="reka">
+        <item>@string/text_reka_1</item>
+        <item>@string/text_reka_2</item>
+        <item>@string/text_reka_3</item>
+        <item>@string/text_reka_4</item>
+        <item>@string/text_reka_5</item>
+        <item>@string/text_reka_6</item>
+        <item>@string/text_reka_7</item>
+        <item>@string/text_reka_8</item>
+        <item>@string/text_reka_9</item>
+        <item>@string/text_reka_10</item>
+    </array>
+    <array name="glowa">
+        <item>@string/text_glowa_1</item>
+        <item>@string/text_glowa_2</item>
+        <item>@string/text_glowa_3</item>
+        <item>@string/text_glowa_4</item>
+        <item>@string/text_glowa_5</item>
+        <item>@string/text_glowa_5</item>
+        <item>@string/text_glowa_6</item>
+        <item>@string/text_glowa_7</item>
+        <item>@string/text_glowa_8</item>
+        <item>@string/text_glowa_9</item>
+        <item>@string/text_glowa_10</item>
+    </array>
+    <array name="noga">
+        <item>@string/text_noga_1</item>
+        <item>@string/text_noga_2</item>
+        <item>@string/text_noga_3</item>
+        <item>@string/text_noga_4</item>
+        <item>@string/text_noga_5</item>
+        <item>@string/text_noga_6</item>
+        <item>@string/text_noga_7</item>
+        <item>@string/text_noga_8</item>
+        <item>@string/text_noga_9</item>
+        <item>@string/text_noga_10</item>
+    </array>
+    <array name="korpus">
+        <item>@string/text_korpus_1</item>
+        <item>@string/text_korpus_2</item>
+        <item>@string/text_korpus_3</item>
+        <item>@string/text_korpus_4</item>
+        <item>@string/text_korpus_5</item>
+        <item>@string/text_korpus_6</item>
+        <item>@string/text_korpus_7</item>
+        <item>@string/text_korpus_8</item>
+        <item>@string/text_korpus_9</item>
+        <item>@string/text_korpus_10</item>
+    </array>
+</resources>

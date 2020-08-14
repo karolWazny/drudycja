@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/party_navigation"
+    app:startDestination="@id/party_nav_party">
+
+    <fragment
+        android:id="@+id/party_nav_character"
+        android:label="@string/title_character"
+        tools:layout="@layout/fragment_party_character" />
+
+    <fragment
+        android:id="@+id/party_nav_party"
+        android:label="@string/title_party"
+        tools:layout="@layout/fragment_party_character" />
+
+    <fragment
+        android:id="@+id/party_nav_foes"
+        android:label="@string/title_foes"
+        tools:layout="@layout/fragment_party_character" />
+</navigation>
