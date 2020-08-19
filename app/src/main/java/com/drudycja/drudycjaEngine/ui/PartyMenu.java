@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.drudycja.R;
-import com.drudycja.drudycjaEngine.ui.partycharacter.PartyCharacterFragment;
+import com.drudycja.drudycjaEngine.ui.partycharacter.ItemFragment;
 import com.drudycja.drudycjaEngine.ui.partyfoes.PartyFoesFragment;
 import com.drudycja.drudycjaEngine.ui.partyparty.PartyPartyFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -23,7 +23,7 @@ public class PartyMenu extends AppCompatActivity implements BottomNavigationView
             Fragment fragment;
             switch(item.getItemId()){
                 case R.id.partyNavigationCharacter:
-                    fragment = new PartyCharacterFragment();
+                    fragment = new ItemFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.partyNavigationTeam:
@@ -43,7 +43,7 @@ public class PartyMenu extends AppCompatActivity implements BottomNavigationView
    protected void onCreate(Bundle savedInstanceState) {
        super.onCreate(savedInstanceState);
        setContentView(R.layout.party_activity);
-       loadFragment(new PartyCharacterFragment());
+       loadFragment(new ItemFragment());
        BottomNavigationView bottomNavigationView = findViewById(R.id.party_nav_view);
        bottomNavigationView.setOnNavigationItemSelectedListener(this);
    }
@@ -79,7 +79,7 @@ public class PartyMenu extends AppCompatActivity implements BottomNavigationView
         Fragment fragment = null;
         switch(item.getItemId()){
             case R.id.partyNavigationCharacter:
-                fragment = new PartyCharacterFragment();
+                fragment = new ItemFragment();
                 break;
             case R.id.partyNavigationTeam:
                 fragment = new PartyPartyFragment();
