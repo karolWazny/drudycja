@@ -1,12 +1,11 @@
 package com.drudycja.drudycjaEngine.walka;
 
+import com.drudycja.drudycjaEngine.general.Dice;
 import com.drudycja.drudycjaEngine.general.Postac;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-
-import drudycjaEngine.general.Dice;
 
 public class Krytyki {
     static public void trafienieKrytyczne(Postac ofiara, int wartoscKrytyczna, int wartoscTrafienia)

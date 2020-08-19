@@ -1,6 +1,6 @@
 package com.drudycja.drudycjaEngine.walka;
 import com.drudycja.drudycjaEngine.general.Postac;
-import drudycjaEngine.general.Dice;
+import com.drudycja.drudycjaEngine.general.Dice;
 
 public class Walka {
     
