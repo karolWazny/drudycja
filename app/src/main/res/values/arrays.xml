@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="nowa_postac">
+        <item>@string/lab_based_on</item>
+        <item>@string/lab_default</item>
+        <item>@string/lab_wizard_create</item>
+    </array>
+</resources>

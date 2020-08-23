@@ -67,4 +67,8 @@
     <string name="title_character">Postacie</string>
     <string name="title_party">Kampanie</string>
     <string name="title_foes">Przeciwnicy</string>
+    <string name="title_new_character">Stwórz nową postać:</string>
+    <string name="lab_based_on">- na wzór istniejącej</string>
+    <string name="lab_default">- od podstaw</string>
+    <string name="lab_wizard_create">- z pomocą czarodzieja</string>
 </resources>
