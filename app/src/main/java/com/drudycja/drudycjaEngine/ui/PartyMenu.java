@@ -2,6 +2,7 @@ package com.drudycja.drudycjaEngine.ui;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,9 +44,10 @@ public class PartyMenu extends AppCompatActivity implements BottomNavigationView
    protected void onCreate(Bundle savedInstanceState) {
        super.onCreate(savedInstanceState);
        setContentView(R.layout.party_activity);
-       loadFragment(new PartyCharacterFragment());
+       View container = findViewById(R.id.party_frame_container);
        BottomNavigationView bottomNavigationView = findViewById(R.id.party_nav_view);
        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+       loadFragment(new PartyCharacterFragment());
    }
 
     /*@Override

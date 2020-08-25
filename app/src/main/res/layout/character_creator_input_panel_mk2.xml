@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_int_sum"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/til_int_roll"
+        app:layout_constraintTop_toTopOf="@+id/til_int_base">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/creator_input_int_sum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:enabled="false"
+            android:hint="@string/hint_sum"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_ogd_roll"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/til_ogd_base"
+        app:layout_constraintTop_toTopOf="@+id/til_ogd_base">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/creator_input_ogd_roll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_roll"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:maxLength="2" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_sw_roll"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/til_sw_base"
+        app:layout_constraintTop_toTopOf="@+id/til_sw_base">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/creator_input_sw_roll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_roll"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:maxLength="2" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_ww_roll"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/til_ww_sum"
+        app:layout_constraintStart_toEndOf="@+id/til_ww_base"
+        app:layout_constraintTop_toTopOf="@+id/til_ww_base">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/creator_input_ww_roll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_roll"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:maxLength="2" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_ww_base"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toStartOf="@+id/til_ww_roll"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/creator_input_ww_base"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:focusable="false"
+            android:hint="@string/hint_base"
+            android:inputType="number"
+            android:maxLength="2" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_ww_sum"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/til_us_base"
+        app:layout_constraintStart_toEndOf="@+id/til_ww_roll"
+        app:layout_constraintTop_toTopOf="@+id/til_ww_base">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/creator_input_ww_sum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:enabled="false"
+            android:hint="@string/hint_sum"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/us_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lab_us"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toTopOf="@+id/til_us_base"
+        app:layout_constraintStart_toStartOf="@+id/til_us_base" />
+
+    <TextView
+        android:id="@+id/ww_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lab_ww"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toTopOf="@+id/til_ww_base"
+        app:layout_constraintStart_toStartOf="@+id/til_ww_base" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_us_base"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/til_us_roll"
+        app:layout_constraintStart_toEndOf="@+id/til_ww_sum"
+        app:layout_constraintTop_toTopOf="@+id/til_ww_base">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/creator_input_us_base"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:focusable="false"
+            android:hint="@string/hint_base"
+            android:inputType="number"
+            android:maxLength="2" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_us_roll"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/til_us_sum"
+        app:layout_constraintStart_toEndOf="@+id/til_us_base"
+        app:layout_constraintTop_toTopOf="@+id/til_us_base">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/creator_input_us_roll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_roll"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:maxLength="2" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_us_sum"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/til_us_roll"
+        app:layout_constraintTop_toTopOf="@+id/til_us_base">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/creator_input_us_sum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:enabled="false"
+            android:hint="@string/hint_sum"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/lab_k"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lab_k"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toTopOf="@+id/til_k_base"
+        app:layout_constraintStart_toStartOf="@+id/til_k_base" />
+
+    <TextView
+        android:id="@+id/lab_odp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lab_odp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toTopOf="@+id/til_odp_base"
+        app:layout_constraintStart_toStartOf="@+id/til_odp_base" />
+
+    <TextView
+        android:id="@+id/lab_zr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lab_zr"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toTopOf="@+id/til_zr_base"
+        app:layout_constraintStart_toStartOf="@+id/til_zr_base" />
+
+    <TextView
+        android:id="@+id/lab_int"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lab_int"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toTopOf="@+id/til_int_base"
+        app:layout_constraintStart_toStartOf="@+id/til_int_base" />
+
+    <TextView
+        android:id="@+id/lab_sw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lab_sw"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toTopOf="@+id/til_sw_base"
+        app:layout_constraintStart_toStartOf="@+id/til_sw_base" />
+
+    <TextView
+        android:id="@+id/lab_ogd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lab_ogd"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toTopOf="@+id/til_ogd_base"
+        app:layout_constraintStart_toStartOf="@+id/til_ogd_base" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_k_base"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        app:layout_constraintStart_toStartOf="@+id/til_ww_base"
+        app:layout_constraintTop_toBottomOf="@+id/til_ww_base">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/creator_input_k_base"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:focusable="false"
+            android:hint="@string/hint_base"
+            android:inputType="number"
+            android:maxLength="2" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_odp_base"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/til_us_base"
+        app:layout_constraintTop_toTopOf="@+id/til_k_base">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/creator_input_odp_base"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:focusable="false"
+            android:hint="@string/hint_base"
+            android:inputType="number"
+            android:maxLength="2" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_zr_base"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        app:layout_constraintStart_toStartOf="@+id/til_ww_base"
+        app:layout_constraintTop_toBottomOf="@+id/til_k_base">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/creator_input_zr_base"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:hint="@string/hint_base"
+            android:inputType="number"
+            android:maxLength="2" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_int_base"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/til_us_base"
+        app:layout_constraintTop_toTopOf="@+id/til_zr_base">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/creator_input_int_base"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:focusable="false"
+            android:hint="@string/hint_base"
+            android:inputType="number"
+            android:maxLength="2" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_sw_base"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        app:layout_constraintStart_toStartOf="@+id/til_ww_base"
+        app:layout_constraintTop_toBottomOf="@+id/til_zr_base">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/creator_input_sw_base"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:focusable="false"
+            android:hint="@string/hint_base"
+            android:inputType="number"
+            android:maxLength="2" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_ogd_base"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/til_us_base"
+        app:layout_constraintTop_toTopOf="@+id/til_sw_base">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/creator_input_ogd_base"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:focusable="false"
+            android:hint="@string/hint_base"
+            android:inputType="number"
+            android:maxLength="2" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_k_roll"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/til_k_base"
+        app:layout_constraintTop_toTopOf="@+id/til_k_base">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/creator_input_k_roll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_roll"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:maxLength="2" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_zr_roll"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/til_zr_base"
+        app:layout_constraintTop_toTopOf="@+id/til_zr_base">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/creator_input_zr_roll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_roll"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:maxLength="2" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_odp_roll"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/til_odp_base"
+        app:layout_constraintTop_toTopOf="@+id/til_odp_base">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/creator_input_odp_roll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_roll"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:maxLength="2" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_int_roll"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/til_int_base"
+        app:layout_constraintTop_toTopOf="@+id/til_int_base">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/creator_input_int_roll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_roll"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:maxLength="2" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_k_sum"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/til_k_roll"
+        app:layout_constraintTop_toTopOf="@+id/til_k_base">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/creator_input_k_sum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:enabled="false"
+            android:hint="@string/hint_sum"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_odp_sum"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/til_odp_roll"
+        app:layout_constraintTop_toTopOf="@+id/til_odp_base">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/creator_input_odp_sum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:enabled="false"
+            android:hint="@string/hint_sum"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_zr_sum"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/til_zr_roll"
+        app:layout_constraintTop_toTopOf="@+id/til_zr_base">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/creator_input_zr_sum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:enabled="false"
+            android:hint="@string/hint_sum"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_sw_sum"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/til_sw_roll"
+        app:layout_constraintTop_toTopOf="@+id/til_sw_base">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/creator_input_sw_sum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:enabled="false"
+            android:hint="@string/hint_sum"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_ogd_sum"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/til_ogd_roll"
+        app:layout_constraintTop_toTopOf="@+id/til_ogd_base">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/creator_input_ogd_sum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:enabled="false"
+            android:hint="@string/hint_sum"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/lab_basic_info"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_name"
+        android:layout_width="284dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ch_creator_input_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/lab_name"
+            android:maxLines="1"
+            android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_race"
+        android:layout_width="284dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        app:layout_constraintStart_toStartOf="@+id/til_name"
+        app:layout_constraintTop_toBottomOf="@+id/til_name">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ch_creator_input_race"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/lab_race"
+            android:maxLines="1"
+            android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout3"
+        android:layout_width="284dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        app:layout_constraintStart_toStartOf="@+id/til_race"
+        app:layout_constraintTop_toBottomOf="@+id/til_race">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ch_creator_input_profession"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/lab_profession"
+            android:maxLines="1"
+            android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/lab_cechy_first"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

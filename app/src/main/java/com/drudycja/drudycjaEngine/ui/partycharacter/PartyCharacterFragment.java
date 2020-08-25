@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.drudycja.R;
+import com.drudycja.drudycjaEngine.database.MyDatabaseHelper;
 import com.drudycja.drudycjaEngine.ui.PartyFragment;
 import com.drudycja.drudycjaEngine.ui.partycharacter.dummy.DummyContent;
 
@@ -19,6 +20,7 @@ public class PartyCharacterFragment extends PartyFragment {
 
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
+    private MyDatabaseHelper myDatabaseHelper;
 
     public static PartyCharacterFragment newInstance(int columnCount) {
         PartyCharacterFragment fragment = new PartyCharacterFragment();
@@ -35,6 +37,7 @@ public class PartyCharacterFragment extends PartyFragment {
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
+        myDatabaseHelper = new MyDatabaseHelper(getContext());
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
