@@ -7,6 +7,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +15,7 @@ import com.drudycja.R;
 import com.drudycja.drudycjaEngine.database.MyDatabaseHelper;
 import com.google.android.material.textfield.TextInputEditText;
 
+import static com.drudycja.drudycjaEngine.database.PostacieKolumny.POSTACIE_CHARAKTERYSTYKI_POCZATKOWE;
 import static com.drudycja.drudycjaEngine.database.PostacieKolumny.POSTACIE_IMIE;
 import static com.drudycja.drudycjaEngine.database.PostacieKolumny.POSTACIE_TABELA;
 import static com.drudycja.drudycjaEngine.ui.partycharacter.BazoweWartosci.CZLOWIEK_GLOWNE;
@@ -22,6 +24,7 @@ public class CharacterCreator extends AppCompatActivity implements View.OnClickL
 
     private TextInputEditText[] bazowe;
     private TextInputEditText[] rolls;
+    private TextInputEditText[] sumy;
     private MyDatabaseHelper myDatabaseHelper;
 
     @Override
