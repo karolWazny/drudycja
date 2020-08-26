@@ -21,4 +21,6 @@ public abstract class PartyFragment extends Fragment implements View.OnClickList
         newCharacterButton.setOnClickListener(this);
         return view;
     }
+
+
 }

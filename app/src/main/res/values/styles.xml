@@ -4,6 +4,7 @@
         <!-- Customize your theme here. -->
         <item name="colorControlActivated">@color/colorWybrany</item>
     </style>
+
     <style name="CiemnyMotyw" parent="AppTheme">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -11,4 +12,13 @@
         <item name="android:windowBackground">@color/colorBackgroundDark</item>
         <item name="android:bottomBright">@color/colorBialy</item>
     </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
