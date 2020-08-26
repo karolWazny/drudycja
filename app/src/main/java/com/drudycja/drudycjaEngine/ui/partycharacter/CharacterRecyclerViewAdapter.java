@@ -9,20 +9,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.drudycja.R;
-import com.drudycja.drudycjaEngine.database.MyDatabaseHelper;
-import com.drudycja.drudycjaEngine.ui.partycharacter.dummy.DummyContent;
-import com.drudycja.drudycjaEngine.ui.partycharacter.dummy.DummyContent.DummyItem;
+import com.drudycja.drudycjaEngine.ui.partycharacter.character.CharacterItem;
 
 import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem}.
- * TODO: Replace the implementation with code for your data type.
- */
 public class CharacterRecyclerViewAdapter extends RecyclerView.Adapter<CharacterRecyclerViewAdapter.ViewHolder> {
 
     private final Fragment mParentFragment;
-    private final MyDatabaseHelper myDatabaseHelper;
+    private final List<CharacterItem> characterItems;
     private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -36,9 +30,9 @@ public class CharacterRecyclerViewAdapter extends RecyclerView.Adapter<Character
     };
 
     CharacterRecyclerViewAdapter(Fragment parent,
-                                 MyDatabaseHelper myDatabaseHelper) {
-        this.myDatabaseHelper = myDatabaseHelper;
+                                 List<CharacterItem> characterItems) {
         mParentFragment = parent;
+        this.characterItems = characterItems;
     }
 
     @Override
@@ -50,16 +44,16 @@ public class CharacterRecyclerViewAdapter extends RecyclerView.Adapter<Character
 
     @Override
     public void onBindViewHolder(final CharacterRecyclerViewAdapter.ViewHolder holder, int position) {
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mIdView.setText(String.valueOf(characterItems.get(position).id));
+        holder.mContentView.setText(characterItems.get(position).name);
 
-        holder.itemView.setTag(mValues.get(position));
+        holder.itemView.setTag(characterItems.get(position));
         holder.itemView.setOnClickListener(mOnClickListener);
     }
 
     @Override
     public int getItemCount() {
-        return mValues.size();
+        return characterItems.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

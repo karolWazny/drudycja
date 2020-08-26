@@ -62,7 +62,8 @@ public class PartyCharacterFragment extends PartyFragment {
 
     //z drugiego projektu:
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new CharacterRecyclerViewAdapter(this, myDatabaseHelper));
+        recyclerView.setAdapter(new CharacterRecyclerViewAdapter(this,
+                myDatabaseHelper.getPCList()));
     }
 
     private void startCharacterCreator() {

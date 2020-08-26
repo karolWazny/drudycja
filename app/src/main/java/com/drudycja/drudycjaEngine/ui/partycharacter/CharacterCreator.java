@@ -58,7 +58,7 @@ public class CharacterCreator extends AppCompatActivity implements View.OnClickL
     private void saveNewCharacter() {
         SQLiteDatabase database = myDatabaseHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(POSTACIE_IMIE, "Janusz");
+        values.put(POSTACIE_IMIE, ((TextView) findViewById(R.id.)));
         database.insert(POSTACIE_TABELA, null, values);
         database.close();
     }

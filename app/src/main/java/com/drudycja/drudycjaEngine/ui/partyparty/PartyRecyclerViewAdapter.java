@@ -9,14 +9,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.drudycja.R;
-import com.drudycja.drudycjaEngine.ui.partycharacter.dummy.DummyContent;
-
-import java.util.List;
 
 public class PartyRecyclerViewAdapter extends RecyclerView.Adapter<PartyRecyclerViewAdapter.ViewHolder> {
 
     private final Fragment mParentFragment;
-    private final List<DummyContent.DummyItem> mValues;
+    //private final List<DummyContent.DummyItem> mValues;
     private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -29,9 +26,9 @@ public class PartyRecyclerViewAdapter extends RecyclerView.Adapter<PartyRecycler
         }
     };
 
-    PartyRecyclerViewAdapter(Fragment parent,
-                             List<DummyContent.DummyItem> items) {
-        mValues = items;
+    PartyRecyclerViewAdapter(Fragment parent
+            /*List<DummyContent.DummyItem> items*/) {
+        /*mValues = items;*/
         mParentFragment = parent;
     }
 
@@ -44,16 +41,16 @@ public class PartyRecyclerViewAdapter extends RecyclerView.Adapter<PartyRecycler
 
     @Override
     public void onBindViewHolder(final PartyRecyclerViewAdapter.ViewHolder holder, int position) {
-        holder.mIdView.setText(mValues.get(position).id);
+       /* holder.mIdView.setText(mValues.get(position).id);
         holder.mContentView.setText(mValues.get(position).content);
 
-        holder.itemView.setTag(mValues.get(position));
+        holder.itemView.setTag(mValues.get(position));*/
         holder.itemView.setOnClickListener(mOnClickListener);
     }
 
     @Override
     public int getItemCount() {
-        return mValues.size();
+        return 0;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
