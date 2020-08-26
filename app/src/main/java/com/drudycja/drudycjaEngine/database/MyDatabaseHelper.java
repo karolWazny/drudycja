@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static android.provider.BaseColumns._ID;
+import static com.drudycja.drudycjaEngine.database.PostacieKolumny.POSTACIE_CHARAKTERYSTYKI_POCZATKOWE;
 import static com.drudycja.drudycjaEngine.database.PostacieKolumny.POSTACIE_IMIE;
 import static com.drudycja.drudycjaEngine.database.PostacieKolumny.POSTACIE_TABELA;
 
@@ -27,7 +28,8 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("CREATE TABLE " + POSTACIE_TABELA + "(" +
                 _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                POSTACIE_IMIE + " TEXT NOT NULL);");
+                POSTACIE_IMIE + " TEXT NOT NULL, " +
+                POSTACIE_CHARAKTERYSTYKI_POCZATKOWE + " BLOB);");
     }
 
     @Override
