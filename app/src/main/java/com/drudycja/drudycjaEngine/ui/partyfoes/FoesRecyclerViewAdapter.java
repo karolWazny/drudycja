@@ -9,14 +9,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.drudycja.R;
-import com.drudycja.drudycjaEngine.ui.partycharacter.dummy.DummyContent;
+import com.drudycja.drudycjaEngine.ui.partycharacter.character.CharacterItem;
 
 import java.util.List;
 
 public class FoesRecyclerViewAdapter extends RecyclerView.Adapter<FoesRecyclerViewAdapter.ViewHolder> {
 
     private final Fragment mParentFragment;
-    private final List<DummyContent.DummyItem> mValues;
+    private final List<CharacterItem> foesList;
     private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -30,8 +30,8 @@ public class FoesRecyclerViewAdapter extends RecyclerView.Adapter<FoesRecyclerVi
     };
 
     FoesRecyclerViewAdapter(Fragment parent,
-                            List<DummyContent.DummyItem> items) {
-        mValues = items;
+                            List<CharacterItem> foesList) {
+        this.foesList = foesList;
         mParentFragment = parent;
     }
 
@@ -44,16 +44,16 @@ public class FoesRecyclerViewAdapter extends RecyclerView.Adapter<FoesRecyclerVi
 
     @Override
     public void onBindViewHolder(final FoesRecyclerViewAdapter.ViewHolder holder, int position) {
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mIdView.setText(foesList.get(position).id);
+        holder.mContentView.setText(foesList.get(position).name);
 
-        holder.itemView.setTag(mValues.get(position));
+        holder.itemView.setTag(foesList.get(position));
         holder.itemView.setOnClickListener(mOnClickListener);
     }
 
     @Override
     public int getItemCount() {
-        return mValues.size();
+        return foesList.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.drudycja.R;
 import com.drudycja.drudycjaEngine.database.MyDatabaseHelper;
 import com.drudycja.drudycjaEngine.ui.PartyFragment;
-import com.drudycja.drudycjaEngine.ui.partycharacter.dummy.DummyContent;
 
 import static com.drudycja.R.id.new_character_button;
 
@@ -63,7 +62,8 @@ public class PartyCharacterFragment extends PartyFragment {
 
     //z drugiego projektu:
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new CharacterRecyclerViewAdapter(this, DummyContent.ITEMS));
+        recyclerView.setAdapter(new CharacterRecyclerViewAdapter(this,
+                myDatabaseHelper.getPCList()));
     }
 
     private void startCharacterCreator() {

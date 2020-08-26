@@ -39,7 +39,6 @@ public class CharacterCreator extends AppCompatActivity implements View.OnClickL
         findBazowe();
         loadBaseValues(CZLOWIEK_GLOWNE);
         findRolls();
-        findSumy();
         for (TextInputEditText textInputEditText : rolls) {
             refreshSum(textInputEditText);
         }
@@ -91,6 +90,7 @@ public class CharacterCreator extends AppCompatActivity implements View.OnClickL
     }
 
     private void loadBaseValues(final int[] values) {
+        int[] wartosci = values;
         for (int i = 0; i < 8; i++) {
             bazowe[i].setText(String.valueOf(values[i]));
         }
@@ -148,6 +148,7 @@ public class CharacterCreator extends AppCompatActivity implements View.OnClickL
     }
 
     private void refreshSum(TextView textView) {
+        int value;
         switch (textView.getId()) {
             case R.id.creator_input_ww_roll:
                 addAndRefresh(R.id.creator_input_ww_base, textView, R.id.creator_input_ww_sum);
