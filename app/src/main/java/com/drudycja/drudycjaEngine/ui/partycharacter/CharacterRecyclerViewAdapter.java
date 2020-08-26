@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.drudycja.R;
+import com.drudycja.drudycjaEngine.database.MyDatabaseHelper;
 import com.drudycja.drudycjaEngine.ui.partycharacter.dummy.DummyContent;
 import com.drudycja.drudycjaEngine.ui.partycharacter.dummy.DummyContent.DummyItem;
 
@@ -21,7 +22,7 @@ import java.util.List;
 public class CharacterRecyclerViewAdapter extends RecyclerView.Adapter<CharacterRecyclerViewAdapter.ViewHolder> {
 
     private final Fragment mParentFragment;
-    private final List<DummyContent.DummyItem> mValues;
+    private final MyDatabaseHelper myDatabaseHelper;
     private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -35,8 +36,8 @@ public class CharacterRecyclerViewAdapter extends RecyclerView.Adapter<Character
     };
 
     CharacterRecyclerViewAdapter(Fragment parent,
-                                 List<DummyContent.DummyItem> items) {
-        mValues = items;
+                                 MyDatabaseHelper myDatabaseHelper) {
+        this.myDatabaseHelper = myDatabaseHelper;
         mParentFragment = parent;
     }
 
