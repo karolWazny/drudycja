@@ -5,13 +5,14 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import static android.provider.BaseColumns._ID;
+import static com.drudycja.drudycjaEngine.database.PostacieKolumny.POSTACIE_CHARAKTERYSTYKI_POCZATKOWE;
 import static com.drudycja.drudycjaEngine.database.PostacieKolumny.POSTACIE_IMIE;
 import static com.drudycja.drudycjaEngine.database.PostacieKolumny.POSTACIE_TABELA;
 
 public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     private static final String NAZWA_BAZY_DANYCH = "database.db";
-    private static final int WERSJA_BAZY_DANYCH = 1;
+    private static final int WERSJA_BAZY_DANYCH = 2;
 
     public MyDatabaseHelper(Context kontekst) {
         super(kontekst, NAZWA_BAZY_DANYCH, null, WERSJA_BAZY_DANYCH);
@@ -21,7 +22,8 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("CREATE TABLE " + POSTACIE_TABELA + "(" +
                 _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                POSTACIE_IMIE + " TEXT NOT NULL);");
+                POSTACIE_IMIE + " TEXT NOT NULL, " +
+                POSTACIE_CHARAKTERYSTYKI_POCZATKOWE + " BLOB);");
     }
 
     @Override

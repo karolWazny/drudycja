@@ -94,4 +94,5 @@
     <string name="lab_race">Rasa</string>
     <string name="lab_profession">Profesja</string>
     <string name="lab_cechy_first">Cechy główne</string>
+    <string name="toast_puste_pola">Puste pola!</string>
 </resources>
