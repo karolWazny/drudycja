@@ -6,6 +6,10 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,36 +17,35 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.drudycja.R;
 import com.drudycja.drudycjaEngine.database.MyDatabaseHelper;
+import com.drudycja.drudycjaEngine.ui.partycharacter.character.Race;
 import com.google.android.material.textfield.TextInputEditText;
 
 import static com.drudycja.drudycjaEngine.database.PostacieKolumny.POSTACIE_CHARAKTERYSTYKI_POCZATKOWE;
 import static com.drudycja.drudycjaEngine.database.PostacieKolumny.POSTACIE_IMIE;
+import static com.drudycja.drudycjaEngine.database.PostacieKolumny.POSTACIE_PROFESJA;
+import static com.drudycja.drudycjaEngine.database.PostacieKolumny.POSTACIE_RASA;
 import static com.drudycja.drudycjaEngine.database.PostacieKolumny.POSTACIE_TABELA;
-import static com.drudycja.drudycjaEngine.ui.partycharacter.BazoweWartosci.CZLOWIEK_GLOWNE;
 
-public class CharacterCreator extends AppCompatActivity implements View.OnClickListener, TextView.OnEditorActionListener {
+public class CharacterCreator extends AppCompatActivity implements View.OnClickListener, TextView.OnEditorActionListener,
+        AdapterView.OnItemSelectedListener {
 
+    private TextInputEditText imieTextField;
+    private TextInputEditText profesjaTextField;
     private TextInputEditText[] bazowe;
     private TextInputEditText[] rolls;
     private TextInputEditText[] sumy;
     private MyDatabaseHelper myDatabaseHelper;
+    private Race race;
+    private Button confirmButt;
+    private Button cancelButt;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_creator);
         myDatabaseHelper = new MyDatabaseHelper(this);
-        View confirmButt = findViewById(R.id.character_creator_confirm_butt);
-        confirmButt.setOnClickListener(this);
-        View cancelButt = findViewById(R.id.character_creator_cancel_butt);
-        cancelButt.setOnClickListener(this);
-        findBazowe();
-        loadBaseValues(CZLOWIEK_GLOWNE);
-        findRolls();
-        for (TextInputEditText textInputEditText : rolls) {
-            refreshSum(textInputEditText);
-        }
-        setRollsListeners();
+        race = Race.CZLOWIEK;
+        setupAllViews();
     }
 
     @Override
@@ -50,7 +53,7 @@ public class CharacterCreator extends AppCompatActivity implements View.OnClickL
         switch (view.getId()) {
             case R.id.character_creator_confirm_butt:
                 try {
-                    saveCHaracterToDatabase();
+                    saveCharacterToDatabase();
                     this.finish();
                 } catch (Exception e) {
                     Toast.makeText(this, R.string.toast_puste_pola, Toast.LENGTH_SHORT).show();
@@ -62,24 +65,22 @@ public class CharacterCreator extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    private void saveCHaracterToDatabase() throws Exception {
+    private void saveCharacterToDatabase() throws Exception {
         CharacterDataPackage character = readCharacterFromInputPanel();
         SQLiteDatabase database = myDatabaseHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(POSTACIE_IMIE, character.imie);
-        values.put(POSTACIE_CHARAKTERYSTYKI_POCZATKOWE, character.charakterystyki);
-        database.insert(POSTACIE_TABELA, null, values);
+        ContentValues characterRecord = characterDataToContentValues(character);
+        database.insert(POSTACIE_TABELA, null, characterRecord);
         database.close();
     }
 
     private CharacterDataPackage readCharacterFromInputPanel() throws Exception {
-        CharacterDataPackage character = new CharacterDataPackage();
-        character.imie = ((TextView) findViewById(R.id.ch_creator_input_name)).getText().toString();
-        character.profesja = ((TextView) findViewById(R.id.ch_creator_input_profession)).getText().toString();
-        character.rasa = ((TextView) findViewById(R.id.ch_creator_input_race)).getText().toString();
-        if (character.imie.equals("") || character.rasa.equals("") || character.profesja.equals("")) {
+        if (areEmptyFields()) {
             throw new Exception();
         }
+        CharacterDataPackage character = new CharacterDataPackage();
+        character.imie = imieTextField.getText().toString();
+        character.profesja = profesjaTextField.getText().toString();
+        character.raceId = race.raceNameId;
         for (int i = 0; i < 8; i++) {
             character.charakterystyki[i] = (Byte.parseByte(String.valueOf(sumy[i].getText())));
         }
@@ -89,11 +90,61 @@ public class CharacterCreator extends AppCompatActivity implements View.OnClickL
         return character;
     }
 
-    private void loadBaseValues(final int[] values) {
-        int[] wartosci = values;
+    private ContentValues characterDataToContentValues(CharacterDataPackage characterDataPackage) {
+        ContentValues characterRecord = new ContentValues();
+        characterRecord.put(POSTACIE_IMIE, characterDataPackage.imie);
+        characterRecord.put(POSTACIE_RASA, characterDataPackage.raceId);
+        characterRecord.put(POSTACIE_PROFESJA, characterDataPackage.profesja);
+        characterRecord.put(POSTACIE_CHARAKTERYSTYKI_POCZATKOWE, characterDataPackage.charakterystyki);
+        return characterRecord;
+    }
+
+    private void loadBaseValues() {
+        int[] values = race.baseValues;
         for (int i = 0; i < 8; i++) {
             bazowe[i].setText(String.valueOf(values[i]));
         }
+    }
+
+    private void setupAllViews() {
+        setupButtons();
+        setupRaceSpinner();
+        findAllTextFields();
+        loadBaseValuesAndRefreshSums();
+        setRollsListeners();
+    }
+
+    private void setupRaceSpinner() {
+        Spinner raceSpinner = findViewById(R.id.race_spinner);
+        ArrayAdapter<CharSequence> raceSpinnerAdapter = ArrayAdapter.createFromResource(this,
+                R.array.races_array,
+                android.R.layout.simple_spinner_item);
+        raceSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        raceSpinner.setAdapter(raceSpinnerAdapter);
+        raceSpinner.setOnItemSelectedListener(this);
+    }
+
+    private void setupButtons() {
+        findButtons();
+        setButtonListeners();
+    }
+
+    private void findButtons() {
+        confirmButt = findViewById(R.id.character_creator_confirm_butt);
+        cancelButt = findViewById(R.id.character_creator_cancel_butt);
+    }
+
+    private void setButtonListeners() {
+        confirmButt.setOnClickListener(this);
+        cancelButt.setOnClickListener(this);
+    }
+
+    private void findAllTextFields() {
+        imieTextField = findViewById(R.id.ch_creator_input_name);
+        profesjaTextField = findViewById(R.id.ch_creator_input_profession);
+        findBazowe();
+        findRolls();
+        findSumy();
     }
 
     private void findBazowe() {
@@ -148,36 +199,35 @@ public class CharacterCreator extends AppCompatActivity implements View.OnClickL
     }
 
     private void refreshSum(TextView textView) {
-        int value;
         switch (textView.getId()) {
             case R.id.creator_input_ww_roll:
-                addAndRefresh(R.id.creator_input_ww_base, textView, R.id.creator_input_ww_sum);
+                addRollToBaseAndRefreshSum(R.id.creator_input_ww_base, textView, R.id.creator_input_ww_sum);
                 break;
             case R.id.creator_input_us_roll:
-                addAndRefresh(R.id.creator_input_us_base, textView, R.id.creator_input_us_sum);
+                addRollToBaseAndRefreshSum(R.id.creator_input_us_base, textView, R.id.creator_input_us_sum);
                 break;
             case R.id.creator_input_k_roll:
-                addAndRefresh(R.id.creator_input_k_base, textView, R.id.creator_input_k_sum);
+                addRollToBaseAndRefreshSum(R.id.creator_input_k_base, textView, R.id.creator_input_k_sum);
                 break;
             case R.id.creator_input_odp_roll:
-                addAndRefresh(R.id.creator_input_odp_base, textView, R.id.creator_input_odp_sum);
+                addRollToBaseAndRefreshSum(R.id.creator_input_odp_base, textView, R.id.creator_input_odp_sum);
                 break;
             case R.id.creator_input_zr_roll:
-                addAndRefresh(R.id.creator_input_zr_base, textView, R.id.creator_input_zr_sum);
+                addRollToBaseAndRefreshSum(R.id.creator_input_zr_base, textView, R.id.creator_input_zr_sum);
                 break;
             case R.id.creator_input_int_roll:
-                addAndRefresh(R.id.creator_input_int_base, textView, R.id.creator_input_int_sum);
+                addRollToBaseAndRefreshSum(R.id.creator_input_int_base, textView, R.id.creator_input_int_sum);
                 break;
             case R.id.creator_input_sw_roll:
-                addAndRefresh(R.id.creator_input_sw_base, textView, R.id.creator_input_sw_sum);
+                addRollToBaseAndRefreshSum(R.id.creator_input_sw_base, textView, R.id.creator_input_sw_sum);
                 break;
             case R.id.creator_input_ogd_roll:
-                addAndRefresh(R.id.creator_input_ogd_base, textView, R.id.creator_input_ogd_sum);
+                addRollToBaseAndRefreshSum(R.id.creator_input_ogd_base, textView, R.id.creator_input_ogd_sum);
                 break;
         }
     }
 
-    private void addAndRefresh(int baseTextId, TextView rollText, int sumTextId) {
+    private void addRollToBaseAndRefreshSum(int baseTextId, TextView rollText, int sumTextId) {
         int value = Integer.parseInt(String.valueOf(((TextInputEditText) findViewById(baseTextId)).getText()));
         try {
             value += Integer.parseInt(String.valueOf(rollText.getText()));
@@ -186,11 +236,60 @@ public class CharacterCreator extends AppCompatActivity implements View.OnClickL
         ((TextInputEditText) findViewById(sumTextId)).setText(String.valueOf(value));
     }
 
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+        switch (position) {
+            case 0:
+                race = Race.CZLOWIEK;
+                break;
+            case 1:
+                race = Race.ELF;
+                break;
+            case 2:
+                race = Race.KRASNOLUD;
+                break;
+            case 3:
+                race = Race.NIZIOL;
+                break;
+            default:
+                break;
+        }
+        loadBaseValuesAndRefreshSums();
+    }
+
+    private void loadBaseValuesAndRefreshSums() {
+        loadBaseValues();
+        refreshAllSums();
+    }
+
+    private void refreshAllSums() {
+        for (TextInputEditText textInputEditText : rolls) {
+            refreshSum(textInputEditText);
+        }
+    }
+
+    private boolean areEmptyFields() {
+        if (imieTextField.getText().length() == 0)
+            return true;
+        if (profesjaTextField.getText().length() == 0)
+            return true;
+        for (TextInputEditText textView : rolls) {
+            if (textView.getText().length() == 0)
+                return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
+
     static class CharacterDataPackage {
         public byte[] charakterystyki;
         public String imie;
         public String profesja;
-        public String rasa;
+        public long raceId;
 
         public CharacterDataPackage() {
             charakterystyki = new byte[16];

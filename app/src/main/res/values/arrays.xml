@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <string-array name="races_array">
+        <item android:id="@+id/spinner_man">@string/lab_man</item>
+        <item>@string/lab_elf</item>
+        <item>@string/lab_dwarf</item>
+        <item>@string/lab_halfling</item>
+    </string-array>
 </resources>

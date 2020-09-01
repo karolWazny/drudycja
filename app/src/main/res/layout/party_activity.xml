@@ -7,17 +7,6 @@
     android:layout_height="match_parent"
     android:id="@+id/partyViewContainer">
 
-    <!--<fragment
-        android:name="com.drudycja.drudycjaEngine.ui.partycharacter.PartyCharacterFragment"
-        android:id="@+id/party_host_fragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/party_nav_view"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/party_navigation" />-->
     <FrameLayout
         android:id="@+id/party_frame_container"
         android:layout_width="match_parent"

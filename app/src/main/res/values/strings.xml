@@ -85,8 +85,8 @@
     <string name="lab_wt">Wytrzymałość</string>
     <string name="lab_sz">Szybkość</string>
     <string name="lab_mag">Magia</string>
-    <string name="lab_po">Punkty obłędu</string>
-    <string name="lab_pp">Punkty przeznaczenia</string>
+    <string name="lab_po">Punkty\nobłędu</string>
+    <string name="lab_pp">Punkty\nprzeznaczenia</string>
     <string name="hint_base">baza</string>
     <string name="hint_roll">rzut</string>
     <string name="hint_sum">suma</string>
@@ -95,4 +95,20 @@
     <string name="lab_profession">Profesja</string>
     <string name="lab_cechy_first">Cechy główne</string>
     <string name="toast_puste_pola">Puste pola!</string>
+    <string name="lab_cechy_second">Cechy drugorzędne</string>
+    <string name="hint_max">maks</string>
+    <string name="hint_chwilowa">chwil</string>
+    <string name="hint_mods">mod</string>
+    <string name="lab_man">Człowiek</string>
+    <string name="lab_elf">Elf</string>
+    <string name="lab_dwarf">Krasnolud</string>
+    <string name="lab_halfling">Niziołek</string>
+    <string name="lab_delete">Usuń</string>
+    <string name="lab_edit">Edytuj</string>
+    <string name="dialog_delete_character">Czy na pewno chcesz usunąć tę postać?</string>
+    <string name="lab_yes">Tak</string>
+    <string name="lab_no">Nie</string>
+    <string name="lab_actions">Akcje</string>
+    <string name="lab_log">Log</string>
+    <string name="lab_details">Szczegóły</string>
 </resources>

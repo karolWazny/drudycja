@@ -1,73 +1,70 @@
 package com.drudycja.drudycjaEngine.general;
 
 public class Postac {
-    //stale#################################################
-    public final int BEZBRONNY = -3;
-    public final int OGLUSZONY = -1;
-    public final int PRZYTOMNY = -2;
+    public static final int BEZBRONNY = -3;
+    public static final int OGLUSZONY = -1;
+    public static final int PRZYTOMNY = -2;
 
-    //pola ################################################
+    private Charakterystyka walkaWrecz;
+    private Charakterystyka umiejetnosciStrzeleckie;
+    private Charakterystyka krzepa;
+    private Charakterystyka odpornosc;
+    private Charakterystyka zrecznosc;
+    private Charakterystyka intelekt;
+    private Charakterystyka silaWoli;
+    private Charakterystyka oglada;
+    private Charakterystyka ataki;
+    private Charakterystyka zywotnosc;
+    private Charakterystyka sila;
+    private Charakterystyka wytrzymalosc;
+    private Charakterystyka szybkosc;
+    private Charakterystyka magia;
+    private Charakterystyka punktyObledu;
+    private Charakterystyka punktyPrzeznaczenia;
+    private Charakterystyka punktySzczescia;
+    private Charakterystyka[] characteristics;
+    private Boolean jestZywy = true;
+    private Pancerz pancerz;
+    private int przytomnosc;
 
-   private Charakterystyka walkaWrecz;
-   private Charakterystyka umiejetnosciStrzeleckie;
-   private Charakterystyka krzepa;
-   private Charakterystyka odpornosc;
-   private Charakterystyka zrecznosc;
-   private Charakterystyka intelekt;
-   private Charakterystyka silaWoli;
-   private Charakterystyka oglada;
-   private Charakterystyka ataki;
-   private Charakterystyka zywotnosc;
-   private Charakterystyka sila;
-   private Charakterystyka wytrzymalosc;
-   private Charakterystyka szybkosc;
-   private Charakterystyka magia;
-   private Charakterystyka punktyObledu;
-   private Charakterystyka punktyPrzeznaczenia;
-   private Charakterystyka punktySzczescia;
-   private Boolean jestZywy=true;
-   private Pancerz pancerz;
-   private int przytomnosc;
+    public int getWalkaWrecz() {
+        return characteristics[0].getChwilowa();
+    }
 
-   //getter/setter###########################################
-   public int getWalkaWrecz() {
-       return walkaWrecz.getChwilowa();
-   }
-
-   public int umiejetnosciStrzeleckie() {
-        return umiejetnosciStrzeleckie.getChwilowa();
-   }
+    public int umiejetnosciStrzeleckie() {
+        return characteristics[1].getChwilowa();
+    }
    
    public int getKrzepa() {
-        return krzepa.getChwilowa();
+       return characteristics[2].getChwilowa();
    }
 
    public int getOdpornosc() {
-        return odpornosc.getChwilowa();
+       return characteristics[3].getChwilowa();
     }
 
     public int getZrecznosc() {
-        return zrecznosc.getChwilowa();
+        return characteristics[4].getChwilowa();
     }
 
     public int getIntelekt() {
-        return intelekt.getChwilowa();
+        return characteristics[5].getChwilowa();
     }
 
     public int getSilaWoli() {
-        return silaWoli.getChwilowa();
+        return characteristics[6].getChwilowa();
     }
 
     public int getOglada() {
-        return oglada.getChwilowa();
+        return characteristics[7].getChwilowa();
     }
 
     public int getAtaki() {
-        return ataki.getChwilowa();
+        return characteristics[8].getChwilowa();
     }
 
     public int getZywotnosc() {
-        return zywotnosc.getChwilowa();
+        return characteristics[9].getChwilowa();
     }
 
     public void setZywotnosc(int value) {
@@ -75,23 +72,23 @@ public class Postac {
     }
 
     public int getSila() {
-        return sila.getChwilowa();
+        return characteristics[10].getChwilowa();
     }
 
     public int getWytrzymalosc() {
-        return wytrzymalosc.getChwilowa();
+        return characteristics[11].getChwilowa();
     }
 
     public int getSzybkosc() {
-        return szybkosc.getChwilowa();
+        return characteristics[12].getChwilowa();
     }
 
     public int getMagia() {
-        return magia.getChwilowa();
+        return characteristics[13].getChwilowa();
     }
 
     public int getPunktyObledu() {
-        return punktyObledu.getChwilowa();
+        return characteristics[14].getChwilowa();
     }
 
     public void setPunktyObledu(int arg) {
@@ -100,7 +97,7 @@ public class Postac {
     }
 
     public int getPunktyPrzeznaczenia() {
-        return punktyPrzeznaczenia.getChwilowa();
+        return characteristics[15].getChwilowa();
     }
 
     public int getPunktySzczescia() {
@@ -118,39 +115,21 @@ public class Postac {
     public int getPrzytomnosc() {
         return przytomnosc;
     }
-//konstruktor#################################################################
 
-    public Postac(int[] charakterystyki){
+    public Postac(int[] charakterystyki) {
         bebechyKonstruktora(charakterystyki);
     }
 
-    //konstruktor domyslny######################################################
-    private void bebechyKonstruktora (int[] charakterystyki){
-        walkaWrecz = new Charakterystyka(charakterystyki[0]);
-        umiejetnosciStrzeleckie = new Charakterystyka(charakterystyki[1]);
-        krzepa = new Charakterystyka(charakterystyki[2]);
-        odpornosc = new Charakterystyka(charakterystyki[3]);
-        zrecznosc = new Charakterystyka(charakterystyki[4]);
-        intelekt = new Charakterystyka(charakterystyki[5]);
-        silaWoli = new Charakterystyka(charakterystyki[6]);
-        oglada = new Charakterystyka(charakterystyki[7]);
-        ataki = new Charakterystyka(charakterystyki[8]);
-        zywotnosc = new Charakterystyka(charakterystyki[9]);
-        sila = new Charakterystyka(charakterystyki[10]);
-        wytrzymalosc = new Charakterystyka(charakterystyki[11]);
-        szybkosc = new Charakterystyka(charakterystyki[12]);
-        magia = new Charakterystyka(charakterystyki[13]);
-        punktyObledu = new Charakterystyka(charakterystyki[14]);
-        punktyPrzeznaczenia = new Charakterystyka(charakterystyki[15]);
-        punktySzczescia = new Charakterystyka(charakterystyki[15]);
-        przytomnosc = 2;
+    private void bebechyKonstruktora(int[] charakterystyki) {
+        characteristics = new Charakterystyka[16];
+        for (int i = 0; i < 16; i++) {
+            characteristics[i] = new Charakterystyka(charakterystyki[i]);
+        }
     }
 
-   public Postac()
-    {
+    public Postac() {
         int[] charakterystyki = new int[16];
-        for(int i = 0; i < 8; i++)
-        {
+        for (int i = 0; i < 8; i++) {
             charakterystyki[i] = 31;
         }
         charakterystyki[8] = 1;
@@ -169,9 +148,5 @@ public class Postac {
 
     public void rana(int arg)
     {
-
     }
 }
-
-//klasa pomocnicza Charakterystyka#########################################################
-

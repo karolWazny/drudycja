@@ -35,7 +35,7 @@ public class PartyRecyclerViewAdapter extends RecyclerView.Adapter<PartyRecycler
     @Override
     public PartyRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_item, parent, false);
+                .inflate(R.layout.fragment_character_item, parent, false);
         return new PartyRecyclerViewAdapter.ViewHolder(view);
     }
 
@@ -59,8 +59,8 @@ public class PartyRecyclerViewAdapter extends RecyclerView.Adapter<PartyRecycler
 
         ViewHolder(View view) {
             super(view);
-            mIdView = (TextView) view.findViewById(R.id.item_number);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            mIdView = view.findViewById(R.id.character_item_name);
+            mContentView = view.findViewById(R.id.character_item_race);
         }
     }
 }

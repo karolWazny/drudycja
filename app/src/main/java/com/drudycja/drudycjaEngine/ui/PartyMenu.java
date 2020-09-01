@@ -17,28 +17,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class PartyMenu extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Fragment fragment;
-            switch(item.getItemId()){
-                case R.id.partyNavigationCharacter:
-                    fragment = new PartyCharacterFragment();
-                    loadFragment(fragment);
-                    return true;
-                case R.id.partyNavigationTeam:
-                    fragment = new PartyPartyFragment();
-                    loadFragment(fragment);
-                    return true;
-                case R.id.partyNavigationFoes:
-                    fragment = new PartyFoesFragment();
-                    loadFragment(fragment);
-                    return true;
-            }
-            return false;
-        }
-    };
+    Fragment currentFragment;
 
    @Override
    protected void onCreate(Bundle savedInstanceState) {
@@ -47,25 +26,13 @@ public class PartyMenu extends AppCompatActivity implements BottomNavigationView
        View container = findViewById(R.id.party_frame_container);
        BottomNavigationView bottomNavigationView = findViewById(R.id.party_nav_view);
        bottomNavigationView.setOnNavigationItemSelectedListener(this);
-       loadFragment(new PartyCharacterFragment());
+       currentFragment = new PartyCharacterFragment();
+       loadFragment(currentFragment);
    }
 
-    /*@Override
-    public void onPostCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onPostCreate(savedInstanceState, persistentState);
-
-        BottomNavigationView navigationView = findViewById(R.id.party_nav_view);
-
-
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.partyNavigationCharacter, R.id.partyNavigationTeam, R.id.partyNavigationFoes)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.party_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
-    }*/
     private boolean loadFragment(Fragment fragment) {
         //switching fragment
+        currentFragment = fragment;
         if (fragment != null) {
             getSupportFragmentManager()
                     .beginTransaction()
@@ -92,5 +59,17 @@ public class PartyMenu extends AppCompatActivity implements BottomNavigationView
 
         }
         return loadFragment(fragment);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        try {
+            loadFragment(currentFragment.getClass().newInstance());
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        }
     }
 }
