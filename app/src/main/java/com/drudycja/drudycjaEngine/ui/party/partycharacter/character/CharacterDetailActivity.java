@@ -1,4 +1,4 @@
-package com.drudycja.drudycjaEngine.ui.partycharacter.character;
+package com.drudycja.drudycjaEngine.ui.party.partycharacter.character;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;

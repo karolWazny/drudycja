@@ -2,7 +2,7 @@ package com.drudycja.drudycjaEngine.database;
 
 import android.database.Cursor;
 
-import com.drudycja.drudycjaEngine.ui.partycharacter.character.CharacterItem;
+import com.drudycja.drudycjaEngine.ui.party.partycharacter.character.CharacterItem;
 
 import java.util.ArrayList;
 import java.util.List;

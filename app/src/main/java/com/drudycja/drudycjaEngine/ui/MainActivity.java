@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.drudycja.R;
+import com.drudycja.drudycjaEngine.ui.battle.BattleActivity;
+import com.drudycja.drudycjaEngine.ui.party.PartyMenu;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 

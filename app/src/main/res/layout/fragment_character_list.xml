@@ -9,5 +9,5 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context=".drudycjaEngine.ui.partycharacter.PartyCharacterFragment"
+    tools:context=".drudycjaEngine.ui.party.partycharacter.PartyCharacterFragment"
     tools:listitem="@layout/fragment_character_item" />

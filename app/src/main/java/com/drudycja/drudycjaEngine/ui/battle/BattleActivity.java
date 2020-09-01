@@ -1,4 +1,4 @@
-package com.drudycja.drudycjaEngine.ui;
+package com.drudycja.drudycjaEngine.ui.battle;
 
 import android.os.Bundle;
 

@@ -1,4 +1,4 @@
-package com.drudycja.drudycjaEngine.ui.partycharacter;
+package com.drudycja.drudycjaEngine.ui.party.partycharacter;
 
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.drudycja.R;
 import com.drudycja.drudycjaEngine.database.MyDatabaseHelper;
-import com.drudycja.drudycjaEngine.ui.partycharacter.character.Race;
+import com.drudycja.drudycjaEngine.ui.party.partycharacter.character.Race;
 import com.google.android.material.textfield.TextInputEditText;
 
 import static com.drudycja.drudycjaEngine.database.PostacieKolumny.POSTACIE_CHARAKTERYSTYKI_POCZATKOWE;

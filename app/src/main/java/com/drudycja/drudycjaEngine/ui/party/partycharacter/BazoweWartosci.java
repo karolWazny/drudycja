@@ -1,4 +1,4 @@
-package com.drudycja.drudycjaEngine.ui.partycharacter;
+package com.drudycja.drudycjaEngine.ui.party.partycharacter;
 
 public interface BazoweWartosci {
     int[] CZLOWIEK_WARTOSCI_BAZOWE = {20, 20, 20, 20, 20, 20, 20, 20};

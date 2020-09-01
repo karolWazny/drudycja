@@ -1,4 +1,4 @@
-package com.drudycja.drudycjaEngine.ui.partycharacter;
+package com.drudycja.drudycjaEngine.ui.party.partycharacter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,8 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.drudycja.R;
-import com.drudycja.drudycjaEngine.ui.partycharacter.character.CharacterDetailActivity;
-import com.drudycja.drudycjaEngine.ui.partycharacter.character.CharacterItem;
+import com.drudycja.drudycjaEngine.ui.party.partycharacter.character.CharacterDetailActivity;
+import com.drudycja.drudycjaEngine.ui.party.partycharacter.character.CharacterItem;
 
 import java.util.List;
 

@@ -5,7 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.drudycja.drudycjaEngine.ui.partycharacter.character.CharacterItem;
+import com.drudycja.drudycjaEngine.ui.party.partycharacter.character.CharacterItem;
 
 import java.util.List;
 

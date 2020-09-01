@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".drudycjaEngine.ui.partyparty.PartyPartyFragment">
+    tools:context=".drudycjaEngine.ui.party.partyparty.PartyPartyFragment">
+
     <TextView
         android:id="@+id/text_party"
         android:text="@string/title_party"

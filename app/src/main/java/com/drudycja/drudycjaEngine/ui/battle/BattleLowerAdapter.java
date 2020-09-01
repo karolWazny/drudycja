@@ -1,4 +1,4 @@
-package com.drudycja.drudycjaEngine.ui;
+package com.drudycja.drudycjaEngine.ui.battle;
 
 import android.os.Bundle;
 
@@ -7,12 +7,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-public class BattleUpperAdapter extends FragmentStateAdapter {
-    public BattleUpperAdapter(Fragment fragment) {
+public class BattleLowerAdapter extends FragmentStateAdapter {
+    public BattleLowerAdapter(Fragment fragment) {
         super(fragment);
     }
 
-    public BattleUpperAdapter(FragmentActivity fragmentActivity) {
+    public BattleLowerAdapter(FragmentActivity fragmentActivity) {
         super(fragmentActivity);
     }
 

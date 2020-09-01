@@ -1,4 +1,4 @@
-package com.drudycja.drudycjaEngine.ui.partyparty;
+package com.drudycja.drudycjaEngine.ui.party.partyparty;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,7 +9,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.drudycja.R;
-import com.drudycja.drudycjaEngine.ui.PartyFragment;
+import com.drudycja.drudycjaEngine.ui.party.PartyFragment;
 
 import static com.drudycja.R.id.new_party_button;
 

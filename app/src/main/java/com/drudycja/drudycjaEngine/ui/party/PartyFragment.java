@@ -1,4 +1,4 @@
-package com.drudycja.drudycjaEngine.ui;
+package com.drudycja.drudycjaEngine.ui.party;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

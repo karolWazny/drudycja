@@ -1,4 +1,4 @@
-package com.drudycja.drudycjaEngine.ui;
+package com.drudycja.drudycjaEngine.ui.party;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -9,9 +9,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.drudycja.R;
-import com.drudycja.drudycjaEngine.ui.partycharacter.PartyCharacterFragment;
-import com.drudycja.drudycjaEngine.ui.partyfoes.PartyFoesFragment;
-import com.drudycja.drudycjaEngine.ui.partyparty.PartyPartyFragment;
+import com.drudycja.drudycjaEngine.ui.party.partycharacter.PartyCharacterFragment;
+import com.drudycja.drudycjaEngine.ui.party.partyfoes.PartyFoesFragment;
+import com.drudycja.drudycjaEngine.ui.party.partyparty.PartyPartyFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
