@@ -1,4 +1,4 @@
-package com.drudycja.drudycjaEngine.ui.battle;
+package com.drudycja.drudycjaEngine.ui.battle.characters;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,12 +11,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.drudycja.R;
+import com.drudycja.drudycjaEngine.walka.IBattleObject;
 
 public class BattleCharactersFragment extends Fragment {
-    private BattleObject battleObject;
+    private IBattleObject IBattleObject;
 
-    public BattleCharactersFragment(BattleObject battleObject) {
-        this.battleObject = battleObject;
+    public BattleCharactersFragment(IBattleObject IBattleObject) {
+        this.IBattleObject = IBattleObject;
     }
 
     @Override
@@ -36,6 +37,6 @@ public class BattleCharactersFragment extends Fragment {
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         recyclerView.setAdapter(new BattleCharacterAdapter(this,
-                battleObject.getCharacters()));
+                IBattleObject.getCharacterNameAndFlags()));
     }
 }

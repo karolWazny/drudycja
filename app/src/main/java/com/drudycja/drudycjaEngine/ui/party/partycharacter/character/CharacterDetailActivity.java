@@ -67,7 +67,7 @@ public class CharacterDetailActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void openDeleteCharacterDialog() {//todo strings in dialog
+    private void openDeleteCharacterDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(R.string.dialog_delete_character)
                 .setPositiveButton(R.string.lab_yes, new DialogInterface.OnClickListener() {

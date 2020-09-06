@@ -27,7 +27,9 @@ import static com.drudycja.drudycjaEngine.database.PostacieKolumny.POSTACIE_RASA
 import static com.drudycja.drudycjaEngine.database.PostacieKolumny.POSTACIE_TABELA;
 
 public class CharacterCreator extends AppCompatActivity implements View.OnClickListener, TextView.OnEditorActionListener,
-        AdapterView.OnItemSelectedListener {
+        AdapterView.OnItemSelectedListener {//todo skrócić metody
+    //todo pozbyć się switcha
+    //todo oddzielić id Stringa z nazwą rasy od zapisu rasy do db
 
     private TextInputEditText imieTextField;
     private TextInputEditText profesjaTextField;
