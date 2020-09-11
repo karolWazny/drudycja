@@ -2,6 +2,8 @@ package com.drudycja.drudycjaEngine.walka;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 public class CharacterInBattleTest {
     @Test
     public void flags_test() {
@@ -71,5 +73,24 @@ public class CharacterInBattleTest {
         CharacterInBattle character = builder.build();
         character.removeFlag("nieprzytomny");
         assert character.getFlags().equals("Zmeczony");
+    }
+
+    @Test
+    public void getEmptyFlags_test() {
+        CharacterInBattle.CharacterBuilder builder = new CharacterInBattle.CharacterBuilder();
+        CharacterInBattle character = builder.build();
+        assertEquals(character.getFlags(), "");
+    }
+
+    @Test
+    public void getInitiative_test() {
+        CharacterInBattle.CharacterBuilder builder = new CharacterInBattle.CharacterBuilder();
+        builder.addInitiative(20);
+        CharacterInBattle character = builder.build();
+        assertEquals(character.getInitiative(), 20);
+        builder = new CharacterInBattle.CharacterBuilder();
+        builder.addInitiative(30);
+        character = builder.build();
+        assertEquals(character.getInitiative(), 30);
     }
 }

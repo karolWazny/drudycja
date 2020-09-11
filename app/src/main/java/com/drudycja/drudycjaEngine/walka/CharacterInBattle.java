@@ -3,10 +3,11 @@ package com.drudycja.drudycjaEngine.walka;
 import java.util.LinkedList;
 import java.util.List;
 
-public class CharacterInBattle implements ICharacterInBattleItem {
+public class CharacterInBattle implements ICharacterInBattleItem, Comparable {
     private int initiative;
     private List<String> flags;
     private String name;
+    private Characteristic[] characteristics;
 
     private CharacterInBattle(CharacterBuilder builder) {
         flags = builder.flags;
@@ -29,6 +30,18 @@ public class CharacterInBattle implements ICharacterInBattleItem {
         return flagsToString();
     }
 
+    private String flagsToString() {
+        if (flags.isEmpty()) {
+            return "";
+        }
+        String out = "";
+        for (String flag : flags) {
+            out += flag;
+            out += " ";
+        }
+        return out.substring(0, out.length() - 1);
+    }
+
     @Override
     public void addFlag(String flag) {
         if (!hasFlag(flag)) {
@@ -45,24 +58,26 @@ public class CharacterInBattle implements ICharacterInBattleItem {
         flags.remove(flag);
     }
 
-    private String flagsToString() {
-        String out = "";
-        for (String flag : flags) {
-            out += flag;
-            out += " ";
-        }
-        return out.substring(0, out.length() - 1);
+    @Override
+    public NameFlagsInitiativeBean getNameFlagsInitiative() {
+        NameFlagsInitiativeBean bean = new NameFlagsInitiativeBean();
+        bean.name = name;
+        bean.initiative = initiative;
+        bean.flags = flagsToString();
+        return bean;
     }
 
     @Override
-    public NameFlagsBean getNameAndFlags() {
-        return null;
-    }
-
-    @Override
-    public int[] getStatistics() {
+    public int[] getCharacteristics() {
         return new int[0];
     }//todo nazwa
+
+    @Override
+    public int compareTo(Object o) {
+        if (o instanceof CharacterInBattle) {
+            return Integer.compare(((CharacterInBattle) o).getInitiative(), this.initiative);
+        } else return 1;
+    }
 
     public static class CharacterBuilder {
         private int initiative;

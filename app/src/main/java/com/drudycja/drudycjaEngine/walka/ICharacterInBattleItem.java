@@ -12,7 +12,7 @@ public interface ICharacterInBattleItem {//todo nazwa
 
     void removeFlag(String flag);
 
-    NameFlagsBean getNameAndFlags(); //todo znaleźć dobrą nazwę
+    NameFlagsInitiativeBean getNameFlagsInitiative(); //todo znaleźć dobrą nazwę
 
-    int[] getStatistics();
+    int[] getCharacteristics();
 }

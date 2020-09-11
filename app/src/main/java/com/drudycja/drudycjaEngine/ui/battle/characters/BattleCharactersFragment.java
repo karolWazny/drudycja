@@ -8,16 +8,17 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.drudycja.R;
-import com.drudycja.drudycjaEngine.walka.IBattleObject;
+import com.drudycja.drudycjaEngine.walka.Battle;
 
 public class BattleCharactersFragment extends Fragment {
-    private IBattleObject IBattleObject;
+    private Battle battle;
 
-    public BattleCharactersFragment(IBattleObject IBattleObject) {
-        this.IBattleObject = IBattleObject;
+    public BattleCharactersFragment(Battle battle) {
+        this.battle = battle;
     }
 
     @Override
@@ -28,15 +29,21 @@ public class BattleCharactersFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View view = super.onCreateView(inflater, container, savedInstanceState);
-        RecyclerView recyclerView = view.findViewById(R.id.battle_characters_recycler);
-        assert recyclerView != null;
-        setupRecyclerView(recyclerView);
+        View view = inflater.inflate(R.layout.fragment_battle_characters, container, false);
         return view;
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        RecyclerView recyclerView = view.findViewById(R.id.battle_characters_recycler);
+        assert recyclerView != null;
+        setupRecyclerView(recyclerView);
+    }
+
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(new BattleCharacterAdapter(this,
-                IBattleObject.getCharacterNameAndFlags()));
+                battle.getCharacterNameFlagsInitiative()));
     }
 }

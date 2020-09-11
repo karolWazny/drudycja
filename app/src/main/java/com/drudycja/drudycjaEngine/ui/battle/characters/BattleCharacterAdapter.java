@@ -1,5 +1,6 @@
 package com.drudycja.drudycjaEngine.ui.battle.characters;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,22 +11,23 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.drudycja.R;
-import com.drudycja.drudycjaEngine.walka.NameFlagsBean;
+import com.drudycja.drudycjaEngine.walka.NameFlagsInitiativeBean;
 
 import java.util.List;
 
 public class BattleCharacterAdapter extends RecyclerView.Adapter<BattleCharacterAdapter.ViewHolder> {
 
     private final Fragment parent;
-    private final List<NameFlagsBean> characters;
+    private final List<NameFlagsInitiativeBean> characters;
     private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             //todo implement refreshing actions and full details in bottom pager
+            Log.i("CHARACTER_CLICK", "character " + view.getTag() + " clicked");
         }
     };
 
-    public BattleCharacterAdapter(Fragment parent, List<NameFlagsBean> characters) {
+    public BattleCharacterAdapter(Fragment parent, List<NameFlagsInitiativeBean> characters) {
         this.parent = parent;
         this.characters = characters;
     }
