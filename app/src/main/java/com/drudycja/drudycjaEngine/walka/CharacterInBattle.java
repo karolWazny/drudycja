@@ -15,6 +15,14 @@ public class CharacterInBattle implements ICharacterInBattleItem, Comparable {
         initiative = builder.initiative;
     }
 
+    public void attack(CharacterInBattle target) {
+        //todo implementacja
+    }
+
+    public int getTestingValue(Characteristic.CharacteristicName characteristicName) {
+        return characteristics[characteristicName.index].getTestingValue();
+    }
+
     @Override
     public int getInitiative() {
         return initiative;

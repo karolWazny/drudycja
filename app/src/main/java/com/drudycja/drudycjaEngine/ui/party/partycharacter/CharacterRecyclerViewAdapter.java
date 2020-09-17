@@ -12,8 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.drudycja.R;
+import com.drudycja.drudycjaEngine.database.character.CharacterItem;
 import com.drudycja.drudycjaEngine.ui.party.partycharacter.character.CharacterDetailActivity;
-import com.drudycja.drudycjaEngine.ui.party.partycharacter.character.CharacterItem;
 
 import java.util.List;
 
@@ -49,8 +49,8 @@ public class CharacterRecyclerViewAdapter extends RecyclerView.Adapter<Character
     @Override
     public void onBindViewHolder(final CharacterRecyclerViewAdapter.ViewHolder holder, int position) {
         holder.nameView.setText(String.valueOf(characterItems.get(position).name));
-        holder.raceProfessionView.setText(characterItems.get(position).race + " " +
-                characterItems.get(position).profession);
+        holder.raceView.setText(characterItems.get(position).race.raceNameId);
+        holder.professionView.setText(characterItems.get(position).profession);
 
         holder.itemView.setTag(characterItems.get(position));
         holder.itemView.setOnClickListener(mOnClickListener);
@@ -63,12 +63,14 @@ public class CharacterRecyclerViewAdapter extends RecyclerView.Adapter<Character
 
     class ViewHolder extends RecyclerView.ViewHolder {
         final TextView nameView;
-        final TextView raceProfessionView;
+        final TextView raceView;
+        final TextView professionView;
 
         ViewHolder(View view) {
             super(view);
             nameView = view.findViewById(R.id.character_item_name);
-            raceProfessionView = view.findViewById(R.id.character_item_race);
+            raceView = view.findViewById(R.id.character_item_race);
+            professionView = view.findViewById(R.id.character_item_profession);
         }
     }
 }

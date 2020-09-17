@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/isActiveTView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/actionsLeftTView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/isActiveTView"
+        app:layout_constraintTop_toBottomOf="@+id/isActiveTView" />
+
+    <Spinner
+        android:id="@+id/action_spinner"
+        android:layout_width="163dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="@+id/isActiveTView"
+        app:layout_constraintTop_toBottomOf="@+id/actionsLeftTView" />
+
+    <Spinner
+        android:id="@+id/target_spinner"
+        android:layout_width="201dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toEndOf="@+id/action_spinner"
+        app:layout_constraintTop_toTopOf="@+id/action_spinner" />
+</androidx.constraintlayout.widget.ConstraintLayout>

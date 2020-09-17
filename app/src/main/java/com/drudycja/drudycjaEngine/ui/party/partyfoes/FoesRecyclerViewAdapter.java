@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.drudycja.R;
-import com.drudycja.drudycjaEngine.ui.party.partycharacter.character.CharacterItem;
+import com.drudycja.drudycjaEngine.database.character.CharacterItem;
 
 import java.util.List;
 

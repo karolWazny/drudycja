@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.drudycja.R;
+import com.drudycja.drudycjaEngine.walka.Battle;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -17,12 +18,30 @@ public class BattleActivity extends FragmentActivity {
     private BattleLowerAdapter lowerAdapter;
     private ViewPager2 upperViewPager;
     private ViewPager2 lowerViewPager;
+    private int focusedCharacterPosition;
+    private int activeCharacterPosition;
+    private Battle battle;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle);
         findAndSetViews();
+    }
+
+    private void findAndSetViews() {
+        findViewPagers();
+        setAdapters();
+    }
+
+    private void findViewPagers() {
+        upperViewPager = findViewById(R.id.battle_pager_top);
+        lowerViewPager = findViewById(R.id.battle_pager_bottom);
+    }
+
+    private void setAdapters() {
+        setLowerAdapter();
+        setUpperAdapter();
     }
 
     private void setUpperAdapter() {
@@ -71,18 +90,23 @@ public class BattleActivity extends FragmentActivity {
                 }).attach();
     }
 
-    private void findViePagers() {
-        upperViewPager = findViewById(R.id.battle_pager_top);
-        lowerViewPager = findViewById(R.id.battle_pager_bottom);
+    public int getFocusedCharacterPosition() {
+        return focusedCharacterPosition;
     }
 
-    private void setAdapters() {
-        setLowerAdapter();
-        setUpperAdapter();
+    public void setFocusedCharacterPosition(int focusedCharacterPosition) {
+        this.focusedCharacterPosition = focusedCharacterPosition;
     }
 
-    private void findAndSetViews() {
-        findViePagers();
-        setAdapters();
+    public int getActiveCharacterPosition() {
+        return activeCharacterPosition;
+    }
+
+    public void setActiveCharacterPosition(int activeCharacterPosition) {
+        this.activeCharacterPosition = activeCharacterPosition;
+    }
+
+    public Battle getBattle() {
+        return battle;
     }
 }

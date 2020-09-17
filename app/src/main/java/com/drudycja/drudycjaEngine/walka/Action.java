@@ -17,6 +17,14 @@ public class Action {
         actionExecutor.execute(this);
     }
 
+    public CharacterInBattle getPerformer() {
+        return performer;
+    }
+
+    public CharacterInBattle getTarget() {
+        return target;
+    }
+
     public static class ActionBuilder {
         private CharacterInBattle performer;
         private CharacterInBattle target;

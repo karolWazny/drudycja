@@ -8,10 +8,25 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-public abstract class PartyFragment extends Fragment implements View.OnClickListener{
+import com.drudycja.drudycjaEngine.database.MyDatabaseHelper;
+
+public abstract class PartyFragment extends Fragment implements View.OnClickListener {
 
     protected int buttonId;
     protected int layoutId;
+    private static MyDatabaseHelper myDatabaseHelper;
+
+    public PartyFragment newInstance()
+            throws IllegalAccessException, java.lang.InstantiationException {
+        return getClass().newInstance();
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        myDatabaseHelper = new MyDatabaseHelper(getContext());
+    }
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -22,5 +37,7 @@ public abstract class PartyFragment extends Fragment implements View.OnClickList
         return view;
     }
 
-
+    public MyDatabaseHelper getDatabaseHelper() {
+        return myDatabaseHelper;
+    }
 }

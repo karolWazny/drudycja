@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.drudycja.R;
+import com.drudycja.drudycjaEngine.ui.battle.BattleActivity;
 import com.drudycja.drudycjaEngine.walka.NameFlagsInitiativeBean;
 
 import java.util.List;
@@ -19,24 +20,28 @@ public class BattleCharacterAdapter extends RecyclerView.Adapter<BattleCharacter
 
     private final Fragment parent;
     private final List<NameFlagsInitiativeBean> characters;
+    private final BattleActivity battleActivity;
     private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             //todo implement refreshing actions and full details in bottom pager
+            battleActivity.setFocusedCharacterPosition(characters.indexOf(view.getTag()));
             Log.i("CHARACTER_CLICK", "character " + view.getTag() + " clicked");
         }
     };
 
-    public BattleCharacterAdapter(Fragment parent, List<NameFlagsInitiativeBean> characters) {
+    public BattleCharacterAdapter(Fragment parent, List<NameFlagsInitiativeBean> characters,
+                                  BattleActivity battleActivity) {
         this.parent = parent;
         this.characters = characters;
+        this.battleActivity = battleActivity;
     }
 
     @NonNull
     @Override
     public BattleCharacterAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_character_item, parent, false);
+                .inflate(R.layout.fragment_character_item_margin, parent, false);
         return new BattleCharacterAdapter.ViewHolder(view);
     }
 

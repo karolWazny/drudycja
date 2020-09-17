@@ -1,11 +1,7 @@
 package com.drudycja.drudycjaEngine.ui.party.partycharacter;
 
-import android.content.ContentValues;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,16 +13,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.drudycja.R;
 import com.drudycja.drudycjaEngine.database.MyDatabaseHelper;
-import com.drudycja.drudycjaEngine.ui.party.partycharacter.character.Race;
+import com.drudycja.drudycjaEngine.database.character.IncorrectRaceIdException;
+import com.drudycja.drudycjaEngine.database.character.Race;
 import com.google.android.material.textfield.TextInputEditText;
 
-import static com.drudycja.drudycjaEngine.database.PostacieKolumny.POSTACIE_CHARAKTERYSTYKI_POCZATKOWE;
-import static com.drudycja.drudycjaEngine.database.PostacieKolumny.POSTACIE_IMIE;
-import static com.drudycja.drudycjaEngine.database.PostacieKolumny.POSTACIE_PROFESJA;
-import static com.drudycja.drudycjaEngine.database.PostacieKolumny.POSTACIE_RASA;
-import static com.drudycja.drudycjaEngine.database.PostacieKolumny.POSTACIE_TABELA;
-
-public class CharacterCreator extends AppCompatActivity implements View.OnClickListener, TextView.OnEditorActionListener,
+public class CharacterCreator extends AppCompatActivity implements View.OnClickListener, TextView.OnFocusChangeListener,
         AdapterView.OnItemSelectedListener {//todo skrócić metody
     //todo pozbyć się switcha
     //todo oddzielić id Stringa z nazwą rasy od zapisu rasy do db
@@ -69,10 +60,7 @@ public class CharacterCreator extends AppCompatActivity implements View.OnClickL
 
     private void saveCharacterToDatabase() throws Exception {
         CharacterDataPackage character = readCharacterFromInputPanel();
-        SQLiteDatabase database = myDatabaseHelper.getWritableDatabase();
-        ContentValues characterRecord = characterDataToContentValues(character);
-        database.insert(POSTACIE_TABELA, null, characterRecord);
-        database.close();
+        myDatabaseHelper.addCharacter(character);
     }
 
     private CharacterDataPackage readCharacterFromInputPanel() throws Exception {
@@ -82,7 +70,7 @@ public class CharacterCreator extends AppCompatActivity implements View.OnClickL
         CharacterDataPackage character = new CharacterDataPackage();
         character.imie = imieTextField.getText().toString();
         character.profesja = profesjaTextField.getText().toString();
-        character.raceId = race.raceNameId;
+        character.raceId = race.raceId;
         for (int i = 0; i < 8; i++) {
             character.charakterystyki[i] = (Byte.parseByte(String.valueOf(sumy[i].getText())));
         }
@@ -90,15 +78,6 @@ public class CharacterCreator extends AppCompatActivity implements View.OnClickL
             character.charakterystyki[i] = 5;
         }
         return character;
-    }
-
-    private ContentValues characterDataToContentValues(CharacterDataPackage characterDataPackage) {
-        ContentValues characterRecord = new ContentValues();
-        characterRecord.put(POSTACIE_IMIE, characterDataPackage.imie);
-        characterRecord.put(POSTACIE_RASA, characterDataPackage.raceId);
-        characterRecord.put(POSTACIE_PROFESJA, characterDataPackage.profesja);
-        characterRecord.put(POSTACIE_CHARAKTERYSTYKI_POCZATKOWE, characterDataPackage.charakterystyki);
-        return characterRecord;
     }
 
     private void loadBaseValues() {
@@ -187,17 +166,14 @@ public class CharacterCreator extends AppCompatActivity implements View.OnClickL
 
     private void setRollsListeners() {
         for (TextInputEditText textInputEditText : rolls) {
-            textInputEditText.setOnEditorActionListener(this);
+            textInputEditText.setOnFocusChangeListener(this);
         }
     }
 
     @Override
-    public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
-        if (actionId == EditorInfo.IME_ACTION_DONE) {
-            refreshSum(textView);
-            return false;
-        }
-        return true;
+    public void onFocusChange(View view, boolean b) {
+        if (!b) ;
+        refreshSum((TextView) view);
     }
 
     private void refreshSum(TextView textView) {
@@ -240,21 +216,10 @@ public class CharacterCreator extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-        switch (position) {
-            case 0:
-                race = Race.CZLOWIEK;
-                break;
-            case 1:
-                race = Race.ELF;
-                break;
-            case 2:
-                race = Race.KRASNOLUD;
-                break;
-            case 3:
-                race = Race.NIZIOL;
-                break;
-            default:
-                break;
+        try {
+            race = Race.fromRaceId(position);
+        } catch (IncorrectRaceIdException e) {
+            e.printStackTrace();
         }
         loadBaseValuesAndRefreshSums();
     }
@@ -287,7 +252,7 @@ public class CharacterCreator extends AppCompatActivity implements View.OnClickL
 
     }
 
-    static class CharacterDataPackage {
+    public static class CharacterDataPackage {
         public byte[] charakterystyki;
         public String imie;
         public String profesja;

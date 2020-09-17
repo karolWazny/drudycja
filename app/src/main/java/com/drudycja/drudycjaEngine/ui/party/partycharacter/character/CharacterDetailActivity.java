@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.drudycja.R;
 import com.drudycja.drudycjaEngine.database.MyDatabaseHelper;
+import com.drudycja.drudycjaEngine.database.character.CharacterItem;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class CharacterDetailActivity extends AppCompatActivity {
@@ -36,7 +37,7 @@ public class CharacterDetailActivity extends AppCompatActivity {
         try {
             character = myDatabaseHelper.getCharacterWithId(characterId);
             nameField.setText(character.name);
-            raceField.setText(character.race);
+            raceField.setText(character.race.raceNameId);
             professionField.setText(character.profession);
         } catch (Exception e) {
             e.printStackTrace();

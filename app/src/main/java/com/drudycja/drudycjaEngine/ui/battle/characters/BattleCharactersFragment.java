@@ -12,13 +12,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.drudycja.R;
+import com.drudycja.drudycjaEngine.ui.battle.BattleActivity;
 import com.drudycja.drudycjaEngine.walka.Battle;
 
 public class BattleCharactersFragment extends Fragment {
     private Battle battle;
+    private BattleActivity parent;
 
-    public BattleCharactersFragment(Battle battle) {
+    public BattleCharactersFragment(Battle battle, BattleActivity parent) {
         this.battle = battle;
+        this.parent = parent;
     }
 
     @Override
@@ -44,6 +47,8 @@ public class BattleCharactersFragment extends Fragment {
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(new BattleCharacterAdapter(this,
-                battle.getCharacterNameFlagsInitiative()));
+                battle.getCharacterNameFlagsInitiative(),
+                parent));
     }
+
 }

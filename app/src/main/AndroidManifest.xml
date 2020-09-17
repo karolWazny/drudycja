@@ -20,11 +20,15 @@
         </activity>
         <activity android:name=".drudycjaEngine.ui.battle.BattleActivity" />
         <activity android:name=".drudycjaEngine.ui.party.PartyMenu" />
+        <activity android:name=".drudycjaEngine.ui.battle.BattleSetupWizard" />
         <activity
             android:name=".drudycjaEngine.ui.party.partycharacter.CharacterCreator"
             android:label="@string/title_character_creator"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".drudycjaEngine.ui.party.partycharacter.character.CharacterDetailActivity" />
+        <activity
+            android:name=".drudycjaEngine.ui.party.partyparty.PartyCreator"
+            android:label="@string/title_party_creator" />
     </application>
 
 </manifest>

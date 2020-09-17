@@ -6,7 +6,6 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 import com.drudycja.R;
 import com.drudycja.drudycjaEngine.ui.party.partycharacter.PartyCharacterFragment;
@@ -17,7 +16,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class PartyMenu extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
-    Fragment currentFragment;
+    PartyFragment currentFragment;
 
    @Override
    protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +29,7 @@ public class PartyMenu extends AppCompatActivity implements BottomNavigationView
        loadFragment(currentFragment);
    }
 
-    private boolean loadFragment(Fragment fragment) {
+    private boolean loadFragment(PartyFragment fragment) {
         //switching fragment
         currentFragment = fragment;
         if (fragment != null) {
@@ -45,7 +44,7 @@ public class PartyMenu extends AppCompatActivity implements BottomNavigationView
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item){
-        Fragment fragment = null;
+        PartyFragment fragment = null;
         switch(item.getItemId()){
             case R.id.partyNavigationCharacter:
                 fragment = new PartyCharacterFragment();
@@ -65,7 +64,7 @@ public class PartyMenu extends AppCompatActivity implements BottomNavigationView
     protected void onResume() {
         super.onResume();
         try {
-            loadFragment(currentFragment.getClass().newInstance());
+            loadFragment(currentFragment.newInstance());
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {

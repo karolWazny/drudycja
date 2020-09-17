@@ -1,6 +1,8 @@
-package com.drudycja.drudycjaEngine.database;
+package com.drudycja.drudycjaEngine.database.character;
 
 import android.net.Uri;
+
+import com.drudycja.drudycjaEngine.database.DatabaseConsts;
 
 public interface PostacieKolumny extends DatabaseConsts {
     String POSTACIE_TABELA = "postacie";

@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.drudycja.R;
-import com.drudycja.drudycjaEngine.database.MyDatabaseHelper;
 import com.drudycja.drudycjaEngine.ui.party.PartyFragment;
 
 import static com.drudycja.R.id.new_character_button;
@@ -19,15 +18,6 @@ public class PartyCharacterFragment extends PartyFragment {
 
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
-    private MyDatabaseHelper myDatabaseHelper;
-
-    public static PartyCharacterFragment newInstance(int columnCount) {
-        PartyCharacterFragment fragment = new PartyCharacterFragment();
-        Bundle args = new Bundle();
-        args.putInt(ARG_COLUMN_COUNT, columnCount);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,7 +26,6 @@ public class PartyCharacterFragment extends PartyFragment {
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
-        myDatabaseHelper = new MyDatabaseHelper(getContext());
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -61,7 +50,7 @@ public class PartyCharacterFragment extends PartyFragment {
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         recyclerView.setAdapter(new CharacterRecyclerViewAdapter(this,
-                myDatabaseHelper.getPCList()));
+                getDatabaseHelper().getPCList()));
     }
 
     private void startCharacterCreator() {

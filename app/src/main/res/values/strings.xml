@@ -111,4 +111,8 @@
     <string name="lab_actions">Akcje</string>
     <string name="lab_log">Log</string>
     <string name="lab_details">Szczegóły</string>
+    <string name="lab_start">Rozpocznij</string>
+    <string name="lab_campaign_colon">Kampania:</string>
+    <string name="lab_battle_participants_colon">Uczestnicy walki:</string>
+    <string name="title_party_creator">Nowe party</string>
 </resources>

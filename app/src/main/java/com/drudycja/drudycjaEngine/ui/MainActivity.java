@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.drudycja.R;
-import com.drudycja.drudycjaEngine.ui.battle.BattleActivity;
+import com.drudycja.drudycjaEngine.ui.battle.BattleSetupWizard;
 import com.drudycja.drudycjaEngine.ui.party.PartyMenu;
 
 public class MainActivity extends Activity implements View.OnClickListener {
@@ -37,7 +37,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 openPartyMenu();
                 break;
             case R.id.new_battle_button:
-                startNewBattle();
+                startBattleSetupWizard();
                 break;
             default:
                 break;
@@ -49,8 +49,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         startActivity(i);
     }
 
-    private void startNewBattle() {
-        Intent intent = new Intent(this, BattleActivity.class);
+    private void startBattleSetupWizard() {
+        Intent intent = new Intent(this, BattleSetupWizard.class);
         startActivity(intent);
     }
 }

@@ -12,12 +12,15 @@ import com.drudycja.drudycjaEngine.walka.Battle;
 import com.drudycja.drudycjaEngine.walka.CharacterInBattle;
 
 public class BattleUpperAdapter extends FragmentStateAdapter {
+    private BattleActivity parent;
+
     public BattleUpperAdapter(Fragment fragment) {
         super(fragment);
     }
 
     public BattleUpperAdapter(FragmentActivity fragmentActivity) {
         super(fragmentActivity);
+        this.parent = (BattleActivity) fragmentActivity;
     }
 
     @NonNull
@@ -30,7 +33,12 @@ public class BattleUpperAdapter extends FragmentStateAdapter {
                     .addFlag("zmeczony")
                     .addInitiative(30)
                     .build());
-            return new BattleCharactersFragment(battle);//todo faktyczna implementacja rzeczywistej bitwy
+            battle.addCharacter(new CharacterInBattle.CharacterBuilder()
+                    .addName("Fred")
+                    .addFlag("wyspany")
+                    .addInitiative(40)
+                    .build());
+            return new BattleCharactersFragment(battle, parent);//todo faktyczna implementacja rzeczywistej bitwy
         }
         // Return a NEW fragment instance in createFragment(int)
         Fragment fragment = new DemoObjectFragment();

@@ -22,4 +22,21 @@ public class Characteristic {
     public void addModifier(int modifier) {
         modifiers += modifier;
     }
+
+    public enum CharacteristicName {
+        WALKA_WRECZ(0),
+        UMIEJETNOSCI_STRZELECKIE(1),
+        KRZEPA(2),
+        ODPORNOSC(3),
+        ZRECZNOSC(4),
+        INTELIGENCJA(5),
+        SILA_WOLI(6),
+        OGLADA(7);
+
+        public final int index;
+
+        CharacteristicName(int index) {
+            this.index = index;
+        }
+    }
 }

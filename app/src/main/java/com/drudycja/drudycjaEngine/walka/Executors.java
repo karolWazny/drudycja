@@ -4,7 +4,9 @@ public class Executors {
     public static class SingleAttackExecutor implements ActionExecutor {
         @Override
         public void execute(Action action) {
-
+            CharacterInBattle performer = action.getPerformer();
+            CharacterInBattle target = action.getTarget();
+            performer.attack(target);
         }
     }
 
