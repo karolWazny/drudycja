@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.drudycja.R;
-import com.drudycja.drudycjaEngine.ui.battle.BattleSetupWizard;
+import com.drudycja.drudycjaEngine.ui.battle.wizard.BattleSetupWizard;
 import com.drudycja.drudycjaEngine.ui.party.PartyMenu;
 
 public class MainActivity extends Activity implements View.OnClickListener {

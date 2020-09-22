@@ -17,12 +17,13 @@ import java.util.List;
 
 import static android.provider.BaseColumns._ID;
 import static com.drudycja.drudycjaEngine.database.character.PostacieKolumny.POSTACIE_TABELA;
+import static com.drudycja.drudycjaEngine.database.party.PartyKolumny.PARTY_NAZWA;
 import static com.drudycja.drudycjaEngine.database.party.PartyKolumny.PARTY_TABELA;
 
 public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     private static final String NAZWA_BAZY_DANYCH = "database.db";
-    private static final int WERSJA_BAZY_DANYCH = 9;
+    private static final int WERSJA_BAZY_DANYCH = 10;
 
     public MyDatabaseHelper(Context kontekst) {
         super(kontekst, NAZWA_BAZY_DANYCH, null, WERSJA_BAZY_DANYCH);
@@ -37,6 +38,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + POSTACIE_TABELA);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + PARTY_TABELA);
         onCreate(sqLiteDatabase);
     }
 
@@ -68,15 +70,22 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         database.close();
     }
 
-    public List<PartyItem> getPartyList() {
+    public List<PartyItem> getPartyItems() {
         SQLiteDatabase database = this.getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT * FROM " + PARTY_TABELA, null);
+        String[] columns = new String[2];
+        columns[0] = _ID;
+        columns[1] = PARTY_NAZWA;
+        Cursor cursor = database.query(PARTY_TABELA, columns, null,
+                null, null, null, null);
         List<PartyItem> partyItemList = PartyDatabaseHandler.cursorToPartyList(cursor);
         cursor.close();
         return partyItemList;
     }
 
     public void addParty(PartyCreator.PartyDataPackage party) {
-
+        ContentValues partyRecord = PartyDatabaseHandler.partyDataToContentValues(party);
+        SQLiteDatabase database = getWritableDatabase();
+        database.insert(PARTY_TABELA, null, partyRecord);
+        database.close();
     }
 }

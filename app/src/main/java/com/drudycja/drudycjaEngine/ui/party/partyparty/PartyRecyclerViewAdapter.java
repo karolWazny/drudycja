@@ -42,7 +42,7 @@ public class PartyRecyclerViewAdapter extends RecyclerView.Adapter<PartyRecycler
 
     @Override
     public void onBindViewHolder(final PartyRecyclerViewAdapter.ViewHolder holder, int position) {
-        holder.name.setText(parties.get(position).id);
+        holder.name.setText(parties.get(position).name);
 
         holder.itemView.setTag(parties.get(position));
         holder.itemView.setOnClickListener(mOnClickListener);

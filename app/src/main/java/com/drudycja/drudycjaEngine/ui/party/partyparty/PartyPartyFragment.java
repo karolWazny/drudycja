@@ -43,7 +43,7 @@ public class PartyPartyFragment extends PartyFragment {
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         recyclerView.setAdapter(new PartyRecyclerViewAdapter(this,
-                getDatabaseHelper().getPartyList()));
+                getDatabaseHelper().getPartyItems()));
     }
 
 }

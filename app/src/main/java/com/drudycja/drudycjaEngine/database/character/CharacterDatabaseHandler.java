@@ -14,13 +14,18 @@ public class CharacterDatabaseHandler extends AbstractDatabaseHandler implements
     private ColumnCode[] kolumny;
 
     public CharacterDatabaseHandler() {
-        kolumny = new ColumnCode[6];
+        super(columns(), POSTACIE_TABELA);
+    }
+
+    private static ColumnCode[] columns() {
+        ColumnCode[] kolumny = new ColumnCode[6];
         kolumny[0] = new ColumnCode(BaseColumns._ID, "INTEGER PRIMARY KEY AUTOINCREMENT");
         kolumny[1] = new ColumnCode(POSTACIE_IMIE, "TEXT NOT NULL");
         kolumny[2] = new ColumnCode(POSTACIE_RASA, "INTEGER NOT NULL");
         kolumny[3] = new ColumnCode(POSTACIE_PROFESJA, "TEXT NOT NULL");
         kolumny[4] = new ColumnCode(POSTACIE_CHARAKTERYSTYKI_POCZATKOWE, "BLOB");
         kolumny[5] = new ColumnCode(POSTACIE_PARTY, "INTEGER");
+        return kolumny;
     }
 
     public static CharacterItem cursorToCharacter(Cursor cursor) throws Exception {
@@ -61,18 +66,5 @@ public class CharacterDatabaseHandler extends AbstractDatabaseHandler implements
         characterRecord.put(POSTACIE_PROFESJA, characterDataPackage.profesja);
         characterRecord.put(POSTACIE_CHARAKTERYSTYKI_POCZATKOWE, characterDataPackage.charakterystyki);
         return characterRecord;
-    }
-
-    public String generateSqlCreateTable() {
-        StringBuilder builder = new StringBuilder("CREATE TABLE ");
-        builder.append(POSTACIE_TABELA)
-                .append("(");
-        for (int i = 0; i < kolumny.length - 1; i++) {
-            builder.append(kolumny[i].generateCreateColumnSql())
-                    .append(", ");
-        }
-        builder.append(kolumny[kolumny.length - 1].generateCreateColumnSql())
-                .append(");");
-        return builder.toString();
     }
 }

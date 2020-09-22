@@ -20,7 +20,10 @@
         </activity>
         <activity android:name=".drudycjaEngine.ui.battle.BattleActivity" />
         <activity android:name=".drudycjaEngine.ui.party.PartyMenu" />
-        <activity android:name=".drudycjaEngine.ui.battle.BattleSetupWizard" />
+        <activity
+            android:name=".drudycjaEngine.ui.battle.wizard.BattleSetupWizard"
+            android:label="@string/lab_delete" />
+        <activity android:name=".drudycjaEngine.ui.battle.wizard.AddingBlotkaActivity" />
         <activity
             android:name=".drudycjaEngine.ui.party.partycharacter.CharacterCreator"
             android:label="@string/title_character_creator"

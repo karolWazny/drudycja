@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/sp_dial_character"
+        android:icon="@mipmap/baseline_add_white_18"
+        android:title="Character" />
+    <item
+        android:id="@+id/sp_dial_npc"
+        android:icon="@mipmap/baseline_add_white_18"
+        android:title="NPC" />
+    <item
+        android:id="@+id/sp_dial_custom_blotka"
+        android:icon="@mipmap/baseline_add_white_18"
+        android:title="Customowa blotka" />
+    <item
+        android:id="@+id/sp_dial_blotka"
+        android:icon="@mipmap/baseline_add_white_18"
+        android:title="Blotka" />
+</menu>

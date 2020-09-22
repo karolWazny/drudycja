@@ -23,28 +23,24 @@ public class PartyCreator extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_party_creator);
         myDatabaseHelper = new MyDatabaseHelper(this);
-        setupButtons();
-        findTextViews();
+        setupViews();
     }
 
-    private void setupButtons() {
-        findButtons();
+    private void setupViews() {
+        findViews();
         setButtonsListeners();
     }
 
-    private void findButtons() {
+    private void findViews() {
         confirmButt = findViewById(R.id.party_creator_confirm_butt);
         cancelButt = findViewById(R.id.party_creator_cancel_butt);
+        nameView = findViewById(R.id.partty_name_input);
+        uwagiView = findViewById(R.id.party_uwagi_input);
     }
 
     private void setButtonsListeners() {
         confirmButt.setOnClickListener(this);
         cancelButt.setOnClickListener(this);
-    }
-
-    private void findTextViews() {
-        nameView = findViewById(R.id.partty_name_input);
-        uwagiView = findViewById(R.id.party_uwagi_input);
     }
 
     @Override
@@ -68,9 +64,14 @@ public class PartyCreator extends AppCompatActivity implements View.OnClickListe
     }
 
     private PartyDataPackage readFromInput() {
-        return null; //todo
+        PartyDataPackage partyDataPackage = new PartyDataPackage();
+        partyDataPackage.name = String.valueOf(nameView.getText());
+        partyDataPackage.uwagi = String.valueOf(uwagiView.getText());
+        return partyDataPackage;
     }
 
     public static class PartyDataPackage {
+        public String name;
+        public String uwagi;
     }
 }

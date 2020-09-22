@@ -14,14 +14,13 @@
         layout:layout_constraintEnd_toEndOf="parent"
         layout:layout_constraintHorizontal_bias="0.0"
         layout:layout_constraintStart_toStartOf="parent"
-        layout:layout_constraintTop_toTopOf="parent"
-        layout:layout_constraintVertical_bias="0.0">
+        layout:layout_constraintTop_toTopOf="parent">
 
         <include layout="@layout/character_creator_input_panel_mk2" />
     </ScrollView>
 
     <Button
-        android:id="@+id/party_creator_confirm_butt"
+        android:id="@+id/character_creator_confirm_butt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/lab_confirm"
@@ -30,7 +29,7 @@
         layout:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/party_creator_cancel_butt"
+        android:id="@+id/character_creator_cancel_butt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/lab_cancel"
